@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXON | Premium Tech Courses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Infinite Carousel Logic running in the background */
+        @keyframes infiniteScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .axon-slider-track {
+            display: flex !important;
+            width: max-content !important;
+            animation: infiniteScroll 35s linear infinite !important;
+        }
+        /* Lighten background images slightly so text pops beautifully */
+        .axon-slider-track img {
+            opacity: 0.15;
+            transition: opacity 0.3s ease;
+        }
+        .axon-slider-track:hover img {
+            opacity: 0.25;
+        }
+
+        /* Force Grid into 4 Columns on screens wider than 1024px */
+        @media (min-width: 1024px) {
+            #courses-grid.grid {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="subpage-header">
+        <a href="index.html" class="logo">Axon<span>.</span><sup>TM</sup></a>
+        <div class="cta-group">
+            <a href="index.html" class="btn btn-secondary" style="padding: 10px 20px; font-size: 14px;">🏠 Home</a>
+            <a href="services.html" class="btn btn-secondary" style="padding: 10px 20px; font-size: 14px;">🛠️ Student Services</a>
+            <a href="contact.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px; background: #2563eb; color: #fff;">📩 Contact Us</a>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="intro-flex-container" style="position: relative; padding: 40px 0; margin-bottom: 45px; width: 100%; overflow: hidden; border-radius: 16px;">
+            
+            <div class="section-intro" style="max-width: 650px; margin-bottom: 0; position: relative; z-index: 2; pointer-events: none;">
+                <h1 style="text-shadow: 0 2px 10px rgba(255,255,255,0.8);">Pick Your <span>Skill Upgrades</span></h1>
+                <p style="text-shadow: 0 2px 8px rgba(255,255,255,0.9); font-weight: 500;">Hands-on practical training arrays engineered to adapt around your existing calendar schedules.</p>
+            </div>
+            
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden; pointer-events: none; display: flex; align-items: center;">
+                <div class="axon-slider-track">
+                    <img src="image_e7df15.jpg" alt="Graduate" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://plus.unsplash.com/premium_photo-1682974403877-28721c5ea2b6?w=500&auto=format&fit=crop&q=60" alt="Graduate 2" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://images.unsplash.com/photo-1623945352596-36d5d9f21f70?w=500&auto=format&fit=crop&q=60" alt="Graduate 3" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://plus.unsplash.com/premium_photo-1714397507054-b34acc119eb5?w=500&auto=format&fit=crop&q=60" alt="Graduate 4" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://images.unsplash.com/photo-1589948516895-db76617cb753?w=500&auto=format&fit=crop&q=60" alt="Certificate 1" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://images.unsplash.com/photo-1597700561118-3b2cae28c6c8?w=500&auto=format&fit=crop&q=60" alt="Certificate 2" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://media.istockphoto.com/id/2162666185/photo/person-in-teal-scrubs-hanging-a-framed-certificate.webp?a=1&b=1&s=612x612&w=0&k=20&c=sBs1UPwKs8WbQkqMFFRQmLCYVnW0fjKmtF4n0oYSuAk=" alt="Certificate 3" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    
+                    <img src="image_e7df15.jpg" alt="Graduate" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://plus.unsplash.com/premium_photo-1682974403877-28721c5ea2b6?w=500&auto=format&fit=crop&q=60" alt="Graduate 2" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://images.unsplash.com/photo-1623945352596-36d5d9f21f70?w=500&auto=format&fit=crop&q=60" alt="Graduate 3" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://plus.unsplash.com/premium_photo-1714397507054-b34acc119eb5?w=500&auto=format&fit=crop&q=60" alt="Graduate 4" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://images.unsplash.com/photo-1589948516895-db76617cb753?w=500&auto=format&fit=crop&q=60" alt="Certificate 1" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://images.unsplash.com/photo-1597700561118-3b2cae28c6c8?w=500&auto=format&fit=crop&q=60" alt="Certificate 2" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                    <img src="https://media.istockphoto.com/id/2162666185/photo/person-in-teal-scrubs-hanging-a-framed-certificate.webp?a=1&b=1&s=612x612&w=0&k=20&c=sBs1UPwKs8WbQkqMFFRQmLCYVnW0fjKmtF4n0oYSuAk=" alt="Certificate 3" style="width: 280px; height: 100%; object-fit: cover; display: inline-block; margin-right: 15px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="toolbar-row">
+            <div class="toolbar-left-mix">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="course-search" class="search-input" placeholder="Type to filter courses instantly...">
+                </div>
+                <div class="filter-group" id="course-filters">
+                    <button class="filter-btn active" data-filter="all">All Skills</button>
+                    <button class="filter-btn" data-filter="office">Office Suite</button>
+                    <button class="filter-btn" data-filter="design">Creative & Design</button>
+                    <button class="filter-btn" data-filter="tech">Code & Security</button>
+                </div>
+            </div>
+
+            <div class="floating-cert-badge">
+                <img src="https://cdn-icons-png.flaticon.com/512/2490/2490354.png" alt="Graduation Cap">
+                <span>Select a course and get certified</span>
+            </div>
+        </div>
+        
+        <div class="grid" id="courses-grid">
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&auto=format&fit=crop&q=80" alt="Web3 Development">
+                </div>
+                <div class="card-body">
+                    <h3>Web3 & Smart Contract Systems</h3>
+                    <div class="card-meta">
+                        <p class="price">₦40,000</p>
+                        <span class="duration">⏱️ 8 Weeks</span>
+                    </div>
+                    <p class="desc">Build decentralized architectures, write secure Solidity frameworks, and master decentralized token logistics.</p>
+                    <a href="register.html?type=Web3%20and%20Smart%20Contract%20Systems" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="office">
+                <div class="card-image-wrap">
+                    <span class="card-badge premium">Essential</span>
+                    <img src="https://images.unsplash.com/photo-1658203897415-3cad6cfad5c0?w=500&auto=format&fit=crop&q=60" alt="Microsoft Word">
+                </div>
+                <div class="card-body">
+                    <h3>Microsoft Word — Advanced</h3>
+                    <div class="card-meta">
+                        <p class="price">₦35,000</p>
+                        <span class="duration">⏱️ 4 Weeks</span>
+                    </div>
+                    <p class="desc">Master professional layouts, formatting hacks, mail merge, and flawless document builds.</p>
+                    <a href="register.html?type=Microsoft%20Word" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="office">
+                <div class="card-image-wrap">
+                    <span class="card-badge trending">Hot 🔥</span>
+                    <img src="https://images.unsplash.com/photo-1658203897339-0b8c64a42fba?w=500&auto=format&fit=crop&q=60" alt="Microsoft Excel">
+                </div>
+                <div class="card-body">
+                    <h3>Microsoft Excel — Advanced</h3>
+                    <div class="card-meta">
+                        <p class="price">₦45,000</p>
+                        <span class="duration">⏱️ 5 Weeks</span>
+                    </div>
+                    <p class="desc">Build formulas, automated data sheets, clear dashboards, and analytics skills managers look for.</p>
+                    <a href="register.html?type=Microsoft%20Excel" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="office">
+                <div class="card-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1658203897406-9ef9e2af686c?w=500&auto=format&fit=crop&q=60" alt="PowerPoint">
+                </div>
+                <div class="card-body">
+                    <h3>PowerPoint Masterclass</h3>
+                    <div class="card-meta">
+                        <p class="price">₦35,000</p>
+                        <span class="duration">⏱️ 3 Weeks</span>
+                    </div>
+                    <p class="desc">Design high-impact pitch decks, interactive slide animations, and compelling graphic visuals.</p>
+                    <a href="register.html?type=PowerPoint" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="design">
+                <div class="card-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=500&auto=format&fit=crop&q=80" alt="CorelDRAW">
+                </div>
+                <div class="card-body">
+                    <h3>CorelDRAW Vector Art Suite</h3>
+                    <div class="card-meta">
+                        <p class="price">₦55,000</p>
+                        <span class="duration">⏱️ 6 Weeks</span>
+                    </div>
+                    <p class="desc">Vector art setups, clean geometric logos, typography rules, and professional print blueprints.</p>
+                    <a href="register.html?type=CorelDRAW" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="design">
+                <div class="card-image-wrap">
+                    <span class="card-badge trending">Popular</span>
+                    <img src="https://images.unsplash.com/flagged/photo-1578835445410-079e1d7e2e18?w=500&auto=format&fit=crop&q=60" alt="Photoshop">
+                </div>
+                <div class="card-body">
+                    <h3>Photoshop Studio Layouts</h3>
+                    <div class="card-meta">
+                        <p class="price">₦60,000</p>
+                        <span class="duration">⏱️ 6 Weeks</span>
+                    </div>
+                    <p class="desc">Pro canvas composition, image color grading, assets manipulation, and flawless digital art styles.</p>
+                    <a href="register.html?type=Photoshop" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="office">
+                <div class="card-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1632239776255-0a7f24814df2?w=500&auto=format&fit=crop&q=60" alt="Desktop Publishing">
+                </div>
+                <div class="card-body">
+                    <h3>Desktop Publishing Masterclass</h3>
+                    <div class="card-meta">
+                        <p class="price">₦50,000</p>
+                        <span class="duration">⏱️ 6 Weeks</span>
+                    </div>
+                    <p class="desc">Flyers layout architecture, physical magazines formatting, and complex print-ready assets orchestration.</p>
+                    <a href="register.html?type=Desktop%20Publishing" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="office">
+                <div class="card-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&auto=format&fit=crop&q=80" alt="Secretariat Studies">
+                </div>
+                <div class="card-body">
+                    <h3>Secretariat Studies & Systems</h3>
+                    <div class="card-meta">
+                        <p class="price">₦40,000</p>
+                        <span class="duration">⏱️ 4 Weeks</span>
+                    </div>
+                    <p class="desc">Organized office architecture automation, workflow pipelines management, and data filing workflows.</p>
+                    <a href="register.html?type=Secretariat%20Studies" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <span class="card-badge premium">Advanced</span>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=80" alt="Data Analysis">
+                </div>
+                <div class="card-body">
+                    <h3>Data Analysis Engine (SQL & Python)</h3>
+                    <div class="card-meta">
+                        <p class="price">₦65,000</p>
+                        <span class="duration">⏱️ 8 Weeks</span>
+                    </div>
+                    <p class="desc">Transform chaotic arrays of statistics into clear, actionable business strategies using key analytical tools.</p>
+                    <a href="register.html?type=Data%20Analysis" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <span class="card-badge premium">Elite</span>
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&auto=format&fit=crop&q=80" alt="Ethical Hacking">
+                </div>
+                <div class="card-body">
+                    <h3>Ethical Hacking Foundations</h3>
+                    <div class="card-meta">
+                        <p class="price">₦85,000</p>
+                        <span class="duration">⏱️ 10 Weeks</span>
+                    </div>
+                    <p class="desc">Vulnerability mapping frameworks, system penetration testing protocols, and real security scripts handling.</p>
+                    <a href="register.html?type=Ethical%20Hacking" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1663770114127-4f61cb62b56d?w=500&auto=format&fit=crop&q=60" alt="Cybersecurity">
+                </div>
+                <div class="card-body">
+                    <h3>Cybersecurity Core Architectures</h3>
+                    <div class="card-meta">
+                        <p class="price">₦70,000</p>
+                        <span class="duration">⏱️ 8 Weeks</span>
+                    </div>
+                    <p class="desc">Defensive firewall routing arrays, secure network structural paradigms, and real threat hunting drills.</p>
+                    <a href="register.html?type=Cybersecurity" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="design">
+                <div class="card-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=80" alt="Digital Marketing">
+                </div>
+                <div class="card-body">
+                    <h3>Digital Marketing Growth Engine</h3>
+                    <div class="card-meta">
+                        <p class="price">₦55,000</p>
+                        <span class="duration">⏱️ 6 Weeks</span>
+                    </div>
+                    <p class="desc">Targeted ad analytics configurations, search engine mechanics, and visual content conversion pipelines.</p>
+                    <a href="register.html?type=Digital%20Marketing" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="design">
+                <div class="card-image-wrap">
+                    <img src="https://media.istockphoto.com/id/2274690840/photo/blue-3d-ux-ui-lettering-on-a-white-background-for-interface-development-app-design-website.webp?a=1&b=1&s=612x612&w=0&k=20&c=NevoWXl4QoyWvLLHBTyqDR6YnGPkhF093qXBJhbnB8s=" alt="UI/UX Design">
+                </div>
+                <div class="card-body">
+                    <h3>UI/UX Design Studio Sprint</h3>
+                    <div class="card-meta">
+                        <p class="price">₦75,000</p>
+                        <span class="duration">⏱️ 6 Weeks</span>
+                    </div>
+                    <p class="desc">Figma system prototypes, component interaction mappings, and smooth user layout mechanics.</p>
+                    <a href="register.html?type=UI/UX%20Design" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=500&auto=format&fit=crop&q=60" alt="Web Development">
+                </div>
+                <div class="card-body">
+                    <h3>Modern Full-Stack Web Dev</h3>
+                    <div class="card-meta">
+                        <p class="price">₦80,000</p>
+                        <span class="duration">⏱️ 12 Weeks</span>
+                    </div>
+                    <p class="desc">Clean layout engineering with semantic markup, modern style sheets, and web component operations.</p>
+                    <a href="register.html?type=Web%20Development" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1649180556628-9ba704115795?w=500&auto=format&fit=crop&q=60" alt="Python Programming">
+                </div>
+                <div class="card-body">
+                    <h3>Python Scripting & Automation</h3>
+                    <div class="card-meta">
+                        <p class="price">₦70,000</p>
+                        <span class="duration">⏱️ 6 Weeks</span>
+                    </div>
+                    <p class="desc">Object logic flow control arrays, automated script setups, and file sorting algorithmic architectures.</p>
+                    <a href="register.html?type=Python%20Programming" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <span class="card-badge premium">Elite</span>
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=500&auto=format&fit=crop&q=80" alt="Data Science">
+                </div>
+                <div class="card-body">
+                    <h3>Data Science & AI Pipelines</h3>
+                    <div class="card-meta">
+                        <p class="price">₦90,000</p>
+                        <span class="duration">⏱️ 12 Weeks</span>
+                    </div>
+                    <p class="desc">Predictive modeling paradigms, clean data processing engines, and mathematical machine learning sets.</p>
+                    <a href="register.html?type=Data%20Science" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <span class="card-badge trending">Popular 🔥</span>
+                    <img src="https://media.istockphoto.com/id/1407683268/photo/front-end-developer-working-on-laptop-internet-technologies-concept-business-programming.jpg?s=612x612&w=0&k=20&c=Vk6jBeXDtnmhIFRoqHattVHkLqSuSKcXYfqnknEntRU=" alt="Frontend Web Dev">
+                </div>
+                <div class="card-body">
+                    <h3>Frontend Web Development</h3>
+                    <div class="card-meta">
+                        <p class="price">₦70,000</p>
+                        <span class="duration">⏱️ 8 Weeks</span>
+                    </div>
+                    <p class="desc">Master highly responsive layouts using modern HTML5, advanced CSS, Javascript components, and building clean, dynamic UI frameworks.</p>
+                    <a href="register.html?type=Graphic%20Design" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <span class="card-badge premium">High Yield 💰</span>
+                    <img src="https://media.istockphoto.com/id/1471622750/vector/api-gateway-architecture-management-tool-between-client-and-backend-services-application.jpg?s=612x612&w=0&k=20&c=NqVsngorCI3SOi5i2Xt-2ipQkkC8lzMSQuzHylEh7eo=" alt="Backend Web Dev">
+                </div>
+                <div class="card-body">
+                    <h3>Backend Web Development</h3>
+                    <div class="card-meta">
+                        <p class="price">₦80,000</p>
+                        <span class="duration">⏱️ 10 Weeks</span>
+                    </div>
+                    <p class="desc">Engineer highly scalable database pipelines, master server-side API setups, custom routing mechanics, and secure authentication logistics.</p>
+                    <a href="register.html?type=Web%20Development" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <img src="https://media.istockphoto.com/id/689963918/photo/sql.jpg?s=612x612&w=0&k=20&c=sG_LmzC9KcWt8FBqE42btC9-zAIkHhJ8A80KIkni4MQ=" alt="SQL Microsoft SSMS">
+                </div>
+                <div class="card-body">
+                    <h3>SQL Database — Microsoft SSMS</h3>
+                    <div class="card-meta">
+                        <p class="price">₦50,000</p>
+                        <span class="duration">⏱️ 5 Weeks</span>
+                    </div>
+                    <p class="desc">Master complex database structures, query optimization parameters, nested sub-queries, and data manipulation rules using SQL Server Management Studio.</p>
+                    <a href="register.html?type=Data%20Analysis" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="student-card" data-category="tech">
+                <div class="card-image-wrap">
+                    <span class="card-badge trending">Hot 🔥</span>
+                    <img src="https://media.istockphoto.com/id/2264719357/photo/young-man-and-woman-analyze-financial-charts.webp?a=1&b=1&s=612x612&w=0&k=20&c=JXt0EgYj9A_5NscclZQ0SPuSXsVUm7eBPBTCFeaX7kk=" alt="PowerBI Business Analysis">
+                </div>
+                <div class="card-body">
+                    <h3>PowerBI Advanced Dashboarding</h3>
+                    <div class="card-meta">
+                        <p class="price">₦55,000</p>
+                        <span class="duration">⏱️ 4 Weeks</span>
+                    </div>
+                    <p class="desc">Convert unstructured enterprise statistics into stunning visual reports. Connect multiple data sources and structure interactive dynamic KPI setups.</p>
+                    <a href="register.html?type=Data%20Analysis" class="enroll-btn">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #ffffff; padding: 40px 5%; border-top: 1px solid #e2e8f0; margin-top: 80px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <a href="index.html" class="logo" style="font-size: 20px;">Axon<span>.</span><sup>TM</sup></a>
+                <p style="font-size: 13px; color: #64748b; margin-top: 6px; font-weight: 500;">No fluff. No lines. Pure career optimization mechanics.</p>
+            </div>
+            <div style="display: flex; gap: 24px; font-size: 14px; font-weight: 700;">
+                <a href="courses.html" style="color: #2563eb; text-decoration: none;">Tech Upgrades</a>
+                <a href="services.html" style="color: #475569; text-decoration: none;">Portal Support</a>
+                <a href="contact.html" style="color: #475569; text-decoration: none;">Contact Us</a>
+            </div>
+        </div>
+        <div style="height: 1px; background: #f1f5f9; width: 100%;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; color: #94a3b8; font-weight: 500;">
+            <p>&copy; 2026 AXON Hub. All structural spot rights protected.</p>
+            <p style="color: #64748b; background: #f1f5f9; padding: 4px 10px; border-radius: 6px; font-weight: 700;">⚡ Built for the Ambitious</p>
+        </div>
+    </footer>
+
+    <script>
+        const filterButtons = document.querySelectorAll('#course-filters .filter-btn');
+        const courseCards = document.querySelectorAll('#courses-grid .student-card');
+        const searchInput = document.getElementById('course-search');
+
+        let activeFilter = 'all';
+
+        function filterItems() {
+            const query = searchInput.value.toLowerCase().trim();
+
+            courseCards.forEach(card => {
+                const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+                const cardDesc = card.querySelector('.desc').textContent.toLowerCase();
+                const cardCategory = card.getAttribute('data-category');
+
+                const matchesFilter = (activeFilter === 'all' || cardCategory === activeFilter);
+                const matchesSearch = (cardTitle.includes(query) || cardDesc.includes(query));
+
+                if (matchesFilter && matchesSearch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.getAttribute('data-filter');
+                filterItems();
+            });
+        });
+
+        searchInput.addEventListener('input', filterItems);
+    </script>
+</body>
+</html>

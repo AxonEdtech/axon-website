@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Student Receipt - AXON Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 50px 20px;
+            color: #1e293b;
+        }
+        .receipt-container {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .receipt-card {
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+            padding: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Academic Watermark Pattern Accent */
+        .receipt-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+        }
+        .header-success {
+            text-align: center;
+            border-bottom: 2px dashed #cbd5e1;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .institution-title {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #2563eb;
+            margin: 0 0 8px 0;
+        }
+        .title { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: #0f172a; 
+            margin: 0 0 6px 0; 
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            color: #64748b; 
+            margin: 0; 
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .badge {
+            background: #e2f9ec;
+            color: #10b981;
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .receipt-body {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .row-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 14px;
+            border-bottom: 1px dashed #f1f5f9;
+            font-size: 15px;
+        }
+        .row-meta:last-of-type { 
+            border-bottom: none; 
+            padding-bottom: 0;
+            margin-bottom: 10px;
+        }
+        .label { color: #64748b; font-weight: 500; }
+        .value { color: #0f172a; font-weight: 600; text-align: right; }
+        
+        /* Total Highlight Row styled like standard academic billings */
+        .row-total {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-top: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .row-total .label { color: #0f172a; font-weight: 700; font-size: 16px; }
+        .row-total .value { color: #2563eb; font-weight: 800; font-size: 22px; }
+
+        .action-container {
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .btn-full-width {
+            grid-column: span 2;
+        }
+        .btn-action {
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-print { background: #0f172a; color: #ffffff; }
+        .btn-print:hover { background: #1e293b; }
+        .btn-download { background: #2563eb; color: #ffffff; }
+        .btn-download:hover { background: #1d4ed8; }
+        .btn-home { background: #e2e8f0; color: #475569; }
+        .btn-home:hover { background: #cbd5e1; }
+
+        /* --- OVERLAY POPUP WINDOWS --- */
+        .modal-mask {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-mask.active { opacity: 1; pointer-events: auto; }
+        .popup-window {
+            background: #ffffff;
+            width: 90%; max-width: 420px;
+            border-radius: 24px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .modal-mask.active .popup-window { transform: scale(1); }
+        
+        /* Modal Close Button element styling */
+        .modal-close-btn {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: #f1f5f9;
+            border: none;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: bold;
+            color: #64748b;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close-btn:hover { background: #e2e8f0; color: #0f172a; }
+
+        .popup-title { font-size: 22px; font-weight: 800; color: #0f172a; margin: 0 0 10px 0; letter-spacing: -0.5px; }
+        .popup-title span { color: #2563eb; }
+        .popup-body { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 24px; margin-top: 0; }
+        .btn-whatsapp { background: #22c55e; color: white; width: 100%; }
+        .btn-whatsapp:hover { background: #16a34a; }
+        
+        .btn-close-text {
+            display: inline-block;
+            margin-top: 14px;
+            font-size: 13px;
+            color: #64748b;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-close-text:hover { color: #0f172a; }
+
+        /* Print formatting override rule logic */
+        @media print {
+            body { background: #ffffff; padding: 0; margin: 0; }
+            .receipt-card { border: none; box-shadow: none; padding: 0; }
+            .receipt-card::before { display: none; }
+            .action-container, .modal-mask { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="receipt-container">
+        <div class="receipt-card">
+            <div class="header-success">
+                <p class="institution-title">AXON EdTech Ecosystem</p>
+                <h1 class="title">Official Receipt</h1>
+                <p class="subtitle">Payment confirmation documentation transcript</p>
+                <span class="badge">✓ Transaction Successful</span>
+            </div>
+
+            <div class="receipt-body">
+                <div class="row-meta">
+                    <span class="label">Student Name</span>
+                    <span class="value" id="outName">...</span>
+                </div>
+                <div class="row-meta">
+                    <span class="label">Course / Package</span>
+                    <span class="value" id="outItem">...</span>
+                </div>
+                <div class="row-meta">
+                    <span class="label">Transaction Reference</span>
+                    <span class="value" id="outRef" style="font-family: monospace; font-size: 14px;">...</span>
+                </div>
+                <div class="row-meta">
+                    <span class="label">Date Issued</span>
+                    <span class="value" id="outDate">...</span>
+                </div>
+                
+                <div class="row-meta row-total">
+                    <span class="label">Total Amount Settled</span>
+                    <span class="value" id="outAmount">₦0</span>
+                </div>
+            </div>
+
+            <div class="action-container">
+                <button class="btn-action btn-print" onclick="triggerReceiptAction()">🖨️ Print Receipt</button>
+                <button class="btn-action btn-download" onclick="triggerReceiptAction()">📥 Download PDF</button>
+                <a href="index.html" class="btn-action btn-home btn-full-width">Return back to Student Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-mask" id="whatsappModal">
+        <div class="popup-window">
+            <button class="modal-close-btn" onclick="closeModal()">×</button>
+            <div style="font-size: 44px; margin-bottom: 16px;">📄</div>
+            <h2 class="popup-title">Receipt <span>Processed</span></h2>
+            <p class="popup-body">
+                Your layout configurations have compiled successfully. Dispatch this validation transcript parameters to our operations desk via WhatsApp to get immediate environment access tokens.
+            </p>
+            <a id="whatsappLink" href="#" target="_blank" class="btn-action btn-whatsapp">
+                💬 Send Confirmation via WhatsApp
+            </a>
+            <span class="btn-close-text" onclick="closeModal()">Close & Go Back</span>
+        </div>
+    </div>
+
+    <script>
+        // Extract parameter routing tokens
+        const urlArgs = new URLSearchParams(window.location.search);
+        const nameData = urlArgs.get('name') || "Valued Student";
+        const itemData = urlArgs.get('item') || "Selected Course Upgrade";
+        const amountData = parseInt(urlArgs.get('amount')) || 0;
+        const refData = urlArgs.get('ref') || "AXON-TX-UNKNOWN";
+
+        // Assign to text containers
+        document.getElementById('outName').textContent = decodeURIComponent(nameData);
+        document.getElementById('outItem').textContent = decodeURIComponent(itemData);
+        document.getElementById('outAmount').textContent = "₦" + amountData.toLocaleString();
+        document.getElementById('outRef').textContent = refData;
+        document.getElementById('outDate').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+        });
+
+        // Structure custom text parameters for WhatsApp dynamic dispatch APIs
+        const messageText = `Hello AXON Desk, I have successfully registered and completed payment.\n\n` +
+                            `• Name: ${decodeURIComponent(nameData)}\n` +
+                            `• Course: ${decodeURIComponent(itemData)}\n` +
+                            `• Amount: ₦${amountData.toLocaleString()}\n` +
+                            `• Reference ID: ${refData}\n\n` +
+                            `Please verify my portal credentials token.`;
+
+        // Configure WhatsApp URL redirect string targets
+        document.getElementById('whatsappLink').href = `https://wa.me/2347061864060?text=${encodeURIComponent(messageText)}`;
+
+        // Uniform handling execution for print or download intents
+        function triggerReceiptAction() {
+            window.print();
+            
+            // Open the verification container prompt after 1 second delay loop
+            setTimeout(() => {
+                document.getElementById('whatsappModal').classList.add('active');
+            }, 1000);
+        }
+
+        // Close logic to remove structural blockers and restore download availability
+        function closeModal() {
+            document.getElementById('whatsappModal').classList.remove('active');
+        }
+    </script>
+
+</body>
+</html>
