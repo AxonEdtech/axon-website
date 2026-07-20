@@ -85,12 +85,20 @@ border:none;
 border-radius:8px;
 color:white;
 cursor:pointer;
+transition:.3s;
 
 }
 
 button:hover{
 
 background:#35b4e5;
+
+}
+
+button:disabled{
+
+background:#9adcf3;
+cursor:not-allowed;
 
 }
 
@@ -133,7 +141,7 @@ Complete your course payment securely.
 
 </div>
 
-<button onclick="startPayment()">
+<button id="payBtn" onclick="startPayment()">
 
 Pay Securely
 
@@ -143,7 +151,7 @@ Pay Securely
 
 🔒 Powered securely by Paystack.<br>
 
-Your payment will be verified before your enrollment is confirmed.
+You will be redirected to Paystack's secure payment page.
 
 </p>
 
@@ -151,27 +159,32 @@ Your payment will be verified before your enrollment is confirmed.
 
 <script>
 
-const params=new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
-const course=params.get("course");
+const course = params.get("course");
+const name = params.get("name");
+const email = params.get("email");
+const phone = params.get("phone");
 
-const name=params.get("name");
+if(!course || !name || !email){
 
-const email=params.get("email");
+    alert("Missing registration details. Please register again.");
 
-const phone=params.get("phone");
+    window.location.href="index.html";
 
-document.getElementById("course").textContent=decodeURIComponent(course);
+}
 
-document.getElementById("name").textContent=decodeURIComponent(name);
-
-document.getElementById("email").textContent=email;
-
-document.getElementById("phone").textContent=phone;
-
-
+document.getElementById("course").textContent = decodeURIComponent(course);
+document.getElementById("name").textContent = decodeURIComponent(name);
+document.getElementById("email").textContent = email;
+document.getElementById("phone").textContent = phone;
 
 async function startPayment(){
+
+const button=document.getElementById("payBtn");
+
+button.disabled=true;
+button.innerHTML="Redirecting to Paystack...";
 
 try{
 
@@ -188,11 +201,8 @@ headers:{
 body:JSON.stringify({
 
 course,
-
 name,
-
 email,
-
 phone
 
 })
@@ -209,13 +219,19 @@ window.location.href=result.data.authorization_url;
 
 alert(result.message || "Unable to initialize payment.");
 
+button.disabled=false;
+button.innerHTML="Pay Securely";
+
 }
 
 }catch(error){
 
 console.error(error);
 
-alert("Something went wrong while connecting to the payment server.");
+alert("Unable to connect to the payment server. Please try again.");
+
+button.disabled=false;
+button.innerHTML="Pay Securely";
 
 }
 
