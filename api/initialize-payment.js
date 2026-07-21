@@ -42,7 +42,17 @@ module.exports = async (req, res) => {
 
     try {
 
-        const { course, name, email, phone } = req.body;
+        const {
+
+            course,
+            
+            name,
+            
+            email,
+            
+            phone=""
+            
+            } = req.body;
 
         if (!course || !name || !email) {
 
@@ -77,25 +87,52 @@ module.exports = async (req, res) => {
             {
 
                 email,
-
+            
                 amount: amount * 100,
-
-                callback_url:"https://axonedtech.com.ng/success.html",
-
+            
+                currency: "NGN",
+            
+                callback_url: "https://axonedtech.com.ng/success.html",
+            
                 metadata:{
-
-                    customer_name:name,
-
-                    phone,
-
-                    course,
-
-                    amount
-
+            
+                    custom_fields:[
+            
+                        {
+            
+                            display_name:"Student Name",
+            
+                            variable_name:"student_name",
+            
+                            value:name
+            
+                        },
+            
+                        {
+            
+                            display_name:"Course",
+            
+                            variable_name:"course",
+            
+                            value:course
+            
+                        },
+            
+                        {
+            
+                            display_name:"Phone Number",
+            
+                            variable_name:"phone",
+            
+                            value:phone || ""
+            
+                        }
+            
+                    ]
+            
                 }
-
+            
             },
-
             {
 
                 headers:{
