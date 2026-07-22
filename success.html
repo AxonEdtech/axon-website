@@ -14,96 +14,232 @@
 <style>
 
 *{
-
 margin:0;
 padding:0;
 box-sizing:border-box;
-
 }
 
 body{
 
 font-family:'Roboto',sans-serif;
-background:#f4f7fb;
+background:#edf5fb;
+overflow-x:hidden;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
-padding:30px;
+padding:40px;
+position:relative;
 
 }
 
-.container{
+/* Floating Background */
+
+.background-blur{
+
+position:fixed;
+border-radius:50%;
+filter:blur(90px);
+z-index:-1;
+
+}
+
+.blur1{
+
+width:380px;
+height:380px;
+background:#4DC8F055;
+top:-120px;
+left:-100px;
+animation:float1 8s ease-in-out infinite;
+
+}
+
+.blur2{
+
+width:320px;
+height:320px;
+background:#2ea7d655;
+bottom:-100px;
+right:-80px;
+animation:float2 10s ease-in-out infinite;
+
+}
+
+@keyframes float1{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(35px);
+
+}
+
+}
+
+@keyframes float2{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-40px);
+
+}
+
+}
+
+/* Main Card */
+
+.receipt-container{
 
 width:100%;
-max-width:720px;
-background:#fff;
-border-radius:15px;
+max-width:760px;
+background:white;
+border-radius:24px;
 overflow:hidden;
-box-shadow:0 20px 45px rgba(0,0,0,.08);
+box-shadow:
+0 30px 70px rgba(0,0,0,.08);
+
+animation:fadeIn .7s ease;
 
 }
 
-.header{
+@keyframes fadeIn{
 
-background:#4DC8F0;
-padding:35px;
+from{
+
+opacity:0;
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+.receipt-header{
+
+background:linear-gradient(135deg,#38b6e8,#4DC8F0,#78dfff);
+padding:45px;
 text-align:center;
 color:white;
+position:relative;
+overflow:hidden;
 
 }
 
-.logo{
+.receipt-header::before{
 
-width:85px;
-height:85px;
+content:"";
+position:absolute;
+width:250px;
+height:250px;
+background:rgba(255,255,255,.08);
+border-radius:50%;
+top:-100px;
+right:-70px;
+
+}
+
+.receipt-header::after{
+
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+background:rgba(255,255,255,.08);
+border-radius:50%;
+bottom:-80px;
+left:-50px;
+
+}
+
+.logo-circle{
+
+width:95px;
+height:95px;
 background:white;
 color:#4DC8F0;
 border-radius:50%;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:26px;
-font-weight:bold;
-margin:auto;
-
-}
-
-.header h1{
-
-margin-top:18px;
 font-size:30px;
+font-weight:900;
+margin:auto;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+animation:logoFloat 3s ease-in-out infinite;
 
 }
 
-.header p{
+@keyframes logoFloat{
 
-margin-top:10px;
+0%,100%{
 
-}
-
-.content{
-
-padding:35px;
+transform:translateY(0);
 
 }
 
-.loading{
+50%{
 
+transform:translateY(-10px);
+
+}
+
+}
+
+.receipt-header h1{
+
+margin-top:20px;
+font-size:34px;
+font-weight:700;
+
+}
+
+.receipt-header p{
+
+margin-top:12px;
+font-size:16px;
+opacity:.95;
+
+}
+
+.loading-section{
+
+padding:70px 30px;
 text-align:center;
-padding:60px 20px;
 
 }
 
 .spinner{
 
-width:60px;
-height:60px;
-border:6px solid #ddd;
-border-top:6px solid #4DC8F0;
+width:70px;
+height:70px;
+
+border:7px solid #d9d9d9;
+border-top:7px solid #4DC8F0;
+
 border-radius:50%;
+
 margin:auto;
-animation:spin 1s linear infinite;
+
+animation:spin .9s linear infinite;
 
 }
 
@@ -117,114 +253,686 @@ transform:rotate(360deg);
 
 }
 
-.success{
+.loading-section h2{
+
+margin-top:30px;
+font-size:28px;
+color:#4DC8F0;
+
+}
+
+.loading-section p{
+
+margin-top:15px;
+color:#666;
+
+}
+
+/* ===========================
+   SUCCESS SECTION
+=========================== */
+
+.success-section{
 
 display:none;
+padding:40px;
 
 }
 
-.error{
+.success-animation{
 
-display:none;
-text-align:center;
-padding:60px 30px;
+width:120px;
+height:120px;
 
-}
+margin:20px auto;
 
-.error h2{
+border-radius:50%;
 
-color:red;
-margin-bottom:15px;
-
-}
-
-.receipt{
-
-margin-top:25px;
-border:1px solid #ddd;
-border-radius:10px;
-overflow:hidden;
-
-}
-
-.row{
+background:linear-gradient(135deg,#00d26a,#28c76f);
 
 display:flex;
-justify-content:space-between;
-padding:16px 22px;
-border-bottom:1px solid #eee;
+justify-content:center;
+align-items:center;
+
+font-size:65px;
+color:white;
+
+box-shadow:
+0 15px 35px rgba(0,210,106,.35);
+
+animation:popSuccess .8s ease;
 
 }
 
-.row:last-child{
+@keyframes popSuccess{
+
+0%{
+
+transform:scale(.2) rotate(-180deg);
+opacity:0;
+
+}
+
+70%{
+
+transform:scale(1.15);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+.success-section h2{
+
+text-align:center;
+font-size:32px;
+margin-top:25px;
+color:#1d1d1d;
+
+}
+
+.success-section p{
+
+text-align:center;
+margin-top:10px;
+color:#666;
+font-size:16px;
+
+}
+
+/* ===========================
+   RECEIPT CARD
+=========================== */
+
+.receipt-card{
+
+margin-top:35px;
+
+background:white;
+
+border-radius:18px;
+
+border:1px solid #e8eef5;
+
+overflow:hidden;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.05);
+
+}
+
+.receipt-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px 25px;
+
+border-bottom:1px solid #edf1f5;
+
+transition:.25s;
+
+}
+
+.receipt-row:last-child{
 
 border-bottom:none;
 
 }
 
-.label{
+.receipt-row:hover{
 
-font-weight:600;
-color:#555;
+background:#f9fcff;
 
 }
 
-.value{
+.receipt-row span{
 
 font-weight:500;
+color:#666;
 
 }
 
-.buttons{
+.receipt-row strong{
+
+font-weight:700;
+color:#222;
+text-align:right;
+
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.button-group{
+
+display:flex;
+
+gap:15px;
 
 margin-top:35px;
-display:flex;
-gap:15px;
+
 flex-wrap:wrap;
 
 }
 
-.buttons button{
+.button-group button{
 
 flex:1;
-padding:16px;
+
+padding:17px;
+
 border:none;
-border-radius:8px;
+
+border-radius:12px;
+
 font-size:16px;
+
+font-weight:700;
+
 cursor:pointer;
-font-weight:600;
+
+transition:.25s;
+
+color:white;
 
 }
 
-.printBtn{
+.button-group button:nth-child(1){
 
 background:#4DC8F0;
-color:white;
 
 }
 
-.whatsappBtn{
+.button-group button:nth-child(2){
 
 background:#25D366;
-color:white;
 
 }
 
-.homeBtn{
+.button-group button:nth-child(3){
 
-background:#333;
-color:white;
+background:#222;
 
 }
 
-.footer{
+.button-group button:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 15px 25px rgba(0,0,0,.18);
+
+}
+
+/* ===========================
+   ERROR PAGE
+=========================== */
+
+.error-section{
+
+display:none;
+
+padding:70px 35px;
 
 text-align:center;
-padding:20px;
-color:#666;
-font-size:14px;
 
 }
+
+.error-icon{
+
+width:120px;
+height:120px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:#ffebeb;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:60px;
+
+color:#e53935;
+
+animation:shake .6s;
+
+}
+
+@keyframes shake{
+
+20%{transform:translateX(-8px);}
+40%{transform:translateX(8px);}
+60%{transform:translateX(-6px);}
+80%{transform:translateX(6px);}
+100%{transform:translateX(0);}
+
+}
+
+.error-section h2{
+
+margin-top:25px;
+
+color:#d63031;
+
+font-size:30px;
+
+}
+
+.error-section p{
+
+margin-top:15px;
+
+color:#666;
+
+font-size:16px;
+
+}
+
+.error-section button{
+
+margin-top:30px;
+
+padding:16px 30px;
+
+border:none;
+
+border-radius:12px;
+
+background:#222;
+
+color:white;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+body{
+
+padding:20px;
+
+}
+
+.receipt-header{
+
+padding:35px 20px;
+
+}
+
+.receipt-header h1{
+
+font-size:26px;
+
+}
+
+.logo-circle{
+
+width:75px;
+height:75px;
+font-size:24px;
+
+}
+
+.receipt-row{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:6px;
+
+}
+
+.receipt-row strong{
+
+text-align:left;
+
+}
+
+.button-group{
+
+flex-direction:column;
+
+}
+
+.button-group button{
+
+width:100%;
+
+}
+
+.success-animation{
+
+width:95px;
+height:95px;
+font-size:50px;
+
+}
+
+}
+
+/* ==========================================
+   PREMIUM GLASS EFFECT
+========================================== */
+
+.receipt-card{
+
+backdrop-filter:blur(18px);
+
+background:rgba(255,255,255,.96);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.receipt-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:5px;
+
+background:linear-gradient(
+90deg,
+#4DC8F0,
+#22c55e,
+#4DC8F0);
+
+background-size:300%;
+
+animation:borderMove 6s linear infinite;
+
+}
+
+@keyframes borderMove{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+/* ==========================================
+   RECEIPT ROW ANIMATION
+========================================== */
+
+.receipt-row{
+
+opacity:0;
+
+transform:translateX(-25px);
+
+animation:rowFade .5s forwards;
+
+}
+
+.receipt-row:nth-child(1){animation-delay:.1s;}
+.receipt-row:nth-child(2){animation-delay:.2s;}
+.receipt-row:nth-child(3){animation-delay:.3s;}
+.receipt-row:nth-child(4){animation-delay:.4s;}
+.receipt-row:nth-child(5){animation-delay:.5s;}
+.receipt-row:nth-child(6){animation-delay:.6s;}
+.receipt-row:nth-child(7){animation-delay:.7s;}
+.receipt-row:nth-child(8){animation-delay:.8s;}
+.receipt-row:nth-child(9){animation-delay:.9s;}
+
+@keyframes rowFade{
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+/* ==========================================
+   SUCCESS ICON GLOW
+========================================== */
+
+.success-animation{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.success-animation::after{
+
+content:"";
+
+position:absolute;
+
+width:180px;
+
+height:180px;
+
+border-radius:50%;
+
+border:3px solid rgba(255,255,255,.35);
+
+animation:ripple 2.5s infinite;
+
+}
+
+@keyframes ripple{
+
+0%{
+
+transform:scale(.5);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:scale(1.8);
+
+opacity:0;
+
+}
+
+}
+
+/* ==========================================
+   BUTTON ANIMATION
+========================================== */
+
+.button-group button{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.button-group button::before{
+
+content:"";
+
+position:absolute;
+
+left:-120%;
+
+top:0;
+
+width:120%;
+
+height:100%;
+
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.35),
+transparent);
+
+transition:.8s;
+
+}
+
+.button-group button:hover::before{
+
+left:130%;
+
+}
+
+/* ==========================================
+   FLOATING SHADOW
+========================================== */
+
+.receipt-container{
+
+animation:cardFloat 5s ease-in-out infinite;
+
+}
+
+@keyframes cardFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+}
+
+@media print{
+
+body{
+
+background:white;
+
+padding:0;
+
+}
+
+.background-blur{
+
+display:none;
+
+}
+
+.button-group{
+
+display:none;
+
+}
+
+.receipt-container{
+
+box-shadow:none;
+
+border-radius:0;
+
+width:100%;
+
+}
+
+.receipt-header{
+
+background:#4DC8F0 !important;
+
+-webkit-print-color-adjust:exact;
+
+print-color-adjust:exact;
+
+}
+
+}
+
+/* ===========================
+CONFETTI
+=========================== */
+
+.confetti{
+
+position:fixed;
+
+top:-20px;
+
+width:10px;
+
+height:10px;
+
+z-index:9999;
+
+animation:confettiFall linear forwards;
+
+}
+
+@keyframes confettiFall{
+
+0%{
+
+transform:
+translateY(0)
+rotate(0deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translateY(110vh)
+rotate(720deg);
+
+opacity:0;
+
+}
+
+}
+
 
 </style>
 
@@ -232,185 +940,207 @@ font-size:14px;
 
 <body>
 
-<div class="container">
-
-<div class="header">
-
-<div class="logo">
-
-AXON
-
-</div>
-
-<h1>
-
-Payment Successful
-
-</h1>
-
-<p>
-
-Verifying your transaction...
-
-</p>
-
-</div>
-
-<div class="content">
-
-<div class="content"></div>
-
-<!-- ================= LOADING ================= -->
-
-<div id="loadingSection" class="loading">
-
-    <div class="spinner"></div>
+    <div class="background-blur blur1"></div>
+    <div class="background-blur blur2"></div>
     
-    <h2 style="margin-top:25px;color:#4DC8F0;">
+    <div class="receipt-container">
     
-    Verifying Your Payment...
+        <div class="receipt-header">
     
-    </h2>
+            <div class="logo-circle">
     
-    <p style="margin-top:15px;color:#666;">
+                AXON
     
-    Please wait while we securely verify your payment with Paystack.
+            </div>
     
-    </p>
+            <h1 id="pageTitle">
+    
+                Verifying Payment...
+    
+            </h1>
+    
+            <p id="pageSubtitle">
+    
+                Please wait while we verify your payment.
+    
+            </p>
+    
+        </div>
+    
+    
+        <!-- Loading Screen -->
+    
+        <section id="loadingSection" class="loading-section">
+    
+            <div class="spinner"></div>
+    
+            <h2>Verifying Payment</h2>
+    
+            <p>
+    
+                Connecting securely with Paystack...
+    
+            </p>
+    
+        </section>
+    
+    
+    
+        <!-- Success -->
+    
+        <section id="successSection" class="success-section">
+    
+            <div class="success-animation">
+    
+                ✓
+    
+            </div>
+    
+            <h2>
+    
+                Payment Verified Successfully
+    
+            </h2>
+    
+            <p>
+    
+                Welcome to AXON EdTech.
+    
+            </p>
+    
+            <div class="receipt-card">
+    
+                <div class="receipt-row">
+    
+                    <span>Receipt Number</span>
+    
+                    <strong id="receiptNumber"></strong>
+    
+                </div>
+    
+                <div class="receipt-row">
+    
+                    <span>Student Name</span>
+    
+                    <strong id="studentName"></strong>
+    
+                </div>
+    
+                <div class="receipt-row">
+    
+                    <span>Email</span>
+    
+                    <strong id="studentEmail"></strong>
+    
+                </div>
+    
+                <div class="receipt-row">
+    
+                    <span>Phone</span>
+    
+                    <strong id="studentPhone"></strong>
+    
+                </div>
+    
+                <div class="receipt-row">
+    
+                    <span>Course</span>
+    
+                    <strong id="courseName"></strong>
+    
+                </div>
+    
+                <div class="receipt-row">
+    
+                    <span>Amount Paid</span>
+    
+                    <strong id="amountPaid"></strong>
+    
+                </div>
+    
+                <div class="receipt-row">
+    
+                    <span>Payment Channel</span>
+    
+                    <strong id="paymentChannel"></strong>
+    
+                </div>
+    
+                <div class="receipt-row">
+    
+                    <span>Reference</span>
+    
+                    <strong id="transactionReference"></strong>
+    
+                </div>
+    
+                <div class="receipt-row">
+    
+                    <span>Date</span>
+    
+                    <strong id="paymentDate"></strong>
+    
+                </div>
+    
+            </div>
+    
+            <div class="button-group">
+    
+                <button onclick="window.print()">
+    
+                    🖨 Print Receipt
+    
+                </button>
+    
+                <button onclick="shareWhatsApp()">
+    
+                    📲 Share
+    
+                </button>
+    
+                <button onclick="location.href='index.html'">
+    
+                    🏠 Home
+    
+                </button>
+    
+            </div>
+    
+        </section>
+    
+    
+    
+        <!-- Error -->
+    
+        <section id="errorSection" class="error-section">
+    
+            <div class="error-icon">
+    
+                ✕
+    
+            </div>
+    
+            <h2>
+    
+                Payment Verification Failed
+    
+            </h2>
+    
+            <p id="errorMessage">
+    
+            </p>
+    
+            <button onclick="location.href='index.html'">
+    
+                Return Home
+    
+            </button>
+    
+        </section>
     
     </div>
     
-    <!-- ================= SUCCESS ================= -->
-    
-    <div id="successSection" class="success">
-    
-    <h2 style="color:#28a745;text-align:center;">
-    
-    ✓ Payment Verified Successfully
-    
-    </h2>
-    
-    <p style="text-align:center;margin-top:10px;color:#666;">
-    
-    Thank you for choosing AXON EdTech.
-    
-    </p>
-    
-    <div class="receipt">
-    
-    <div class="row">
-    <span class="label">Receipt No.</span>
-    <span class="value" id="receiptNumber">Loading...</span>
-    </div>
-    
-    <div class="row">
-    <span class="label">Student Name</span>
-    <span class="value" id="studentName"></span>
-    </div>
-    
-    <div class="row">
-    <span class="label">Email Address</span>
-    <span class="value" id="studentEmail"></span>
-    </div>
-    
-    <div class="row">
-    <span class="label">Phone Number</span>
-    <span class="value" id="studentPhone"></span>
-    </div>
-    
-    <div class="row">
-    <span class="label">Course</span>
-    <span class="value" id="courseName"></span>
-    </div>
-    
-    <div class="row">
-    <span class="label">Amount Paid</span>
-    <span class="value" id="amountPaid"></span>
-    </div>
-    
-    <div class="row">
-    <span class="label">Payment Channel</span>
-    <span class="value" id="paymentChannel"></span>
-    </div>
-    
-    <div class="row">
-    <span class="label">Payment Status</span>
-    <span class="value" id="paymentStatus"></span>
-    </div>
-    
-    <div class="row">
-    <span class="label">Transaction Reference</span>
-    <span class="value" id="transactionReference"></span>
-    </div>
-    
-    <div class="row">
-    <span class="label">Payment Date</span>
-    <span class="value" id="paymentDate"></span>
-    </div>
-    
-    </div>
-    
-    <div class="buttons">
-    
-    <button class="printBtn" onclick="window.print()">
-    
-    🖨 Print Receipt
-    
-    </button>
-    
-    <button class="whatsappBtn" onclick="shareWhatsApp()">
-    
-    📲 Share
-    
-    </button>
-    
-    <button class="homeBtn" onclick="location.href='index.html'">
-    
-    🏠 Home
-    
-    </button>
-    
-    </div>
-    
-    </div>
-    
-    <!-- ================= ERROR ================= -->
-    
-    <div id="errorSection" class="error">
-    
-    <h2>
-    
-    Payment Verification Failed
-    
-    </h2>
-    
-    <p id="errorMessage">
-    
-    We couldn't verify this payment.
-    
-    </p>
-    
-    <br>
-    
-    <button class="homeBtn"
-    
-    onclick="location.href='index.html'">
-    
-    Return Home
-    
-    </button>
-    
-    </div>
-    
-    </div>
-    
-    <div class="footer">
-    
-    © 2026 AXON EdTech Academy
-    
-    </div>
-    
-    </div>
+    </body>
 
 </body>
 
@@ -434,6 +1164,71 @@ Verifying your transaction...
     
     }
     
+
+    // =============================
+// Animate Number
+// =============================
+
+function animateAmount(finalAmount){
+
+let start = 0;
+
+const duration = 1200;
+
+const increment = finalAmount / (duration / 20);
+
+const counter = setInterval(()=>{
+
+start += increment;
+
+if(start >= finalAmount){
+
+start = finalAmount;
+
+clearInterval(counter);
+
+}
+
+document.getElementById("amountPaid").innerHTML =
+"₦" + Math.floor(start).toLocaleString();
+
+},20);
+
+}
+
+
+
+// =============================
+// Small Confetti
+// =============================
+
+function launchConfetti(){
+
+for(let i=0;i<80;i++){
+
+const confetti=document.createElement("div");
+
+confetti.className="confetti";
+
+confetti.style.left=Math.random()*100+"vw";
+
+confetti.style.background=
+["#4DC8F0","#28c76f","#ffc107","#ff6384"][Math.floor(Math.random()*4)];
+
+confetti.style.animationDuration=
+(Math.random()*2+2)+"s";
+
+document.body.appendChild(confetti);
+
+setTimeout(()=>{
+
+confetti.remove();
+
+},4000);
+
+}
+
+}
     // =========================
     
     async function verifyPayment(reference){
@@ -443,6 +1238,8 @@ Verifying your transaction...
     const response = await fetch(`/api/verify-payment?reference=${reference}`);
     
     const result = await response.json();
+
+    await new Promise(resolve=>setTimeout(resolve,1500));
     
     if(result.status && result.data.status==="success"){
     
@@ -473,14 +1270,36 @@ Verifying your transaction...
     function populateReceipt(data){
     
     document.getElementById("loadingSection").style.display="none";
+    setTimeout(()=>{
+
+    document.getElementById("successSection").style.display="block";
+
+    launchConfetti();
+
+    },500);
+    
+    document.getElementById("pageTitle").innerHTML =
+    "✅ Payment Verified Successfully";
+
+    document.getElementById("pageSubtitle").innerHTML =
+    "Thank you for your payment. Your enrollment has been confirmed.";
     
     document.getElementById("successSection").style.display="block";
+
+    document.getElementById("successSection")
+    .scrollIntoView({
+
+    behavior:"smooth",
+
+    block:"start"
+
+    });
     
     const metadata=data.metadata || {};
     
     const customFields=metadata.custom_fields || [];
     
-    let studentName=data.customer.first_name || "";
+    let studentName="";
     
     let studentPhone="";
     
@@ -516,8 +1335,8 @@ Verifying your transaction...
     
     document.getElementById("courseName").innerHTML=courseName;
     
-    document.getElementById("amountPaid").innerHTML="₦"+(data.amount/100).toLocaleString();
-    
+    animateAmount(data.amount/100);
+
     document.getElementById("paymentChannel").innerHTML=data.channel.toUpperCase();
     
     document.getElementById("paymentStatus").innerHTML="SUCCESS";
@@ -546,15 +1365,21 @@ Verifying your transaction...
     
     // =========================
     
-    function showError(message){
-    
+        function showError(message){
+
     document.getElementById("loadingSection").style.display="none";
-    
+
+    document.getElementById("pageTitle").innerHTML =
+    "❌ Payment Verification Failed";
+
+    document.getElementById("pageSubtitle").innerHTML =
+    "We couldn't verify this payment.";
+
     document.getElementById("errorSection").style.display="block";
-    
-    document.getElementById("errorMessage").innerHTML=message;
-    
-    }
+
+    document.getElementById("errorMessage").innerHTML = message;
+
+}
     
     // =========================
     
