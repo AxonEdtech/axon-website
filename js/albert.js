@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Inject Floating Widget Markup
+    // 1. Inject Animated Widget Markup with Baby Doll Icon
     const widgetHTML = `
         <div id="albert-widget">
-            <button id="albert-toggle" aria-label="Chat with Albert">💬 Chat with Albert</button>
+            <button id="albert-toggle" class="albert-pop-roll" aria-label="Chat with Albert">
+                <span class="albert-icon">👶</span>
+                <span class="albert-label">Chat with Albert</span>
+            </button>
             <div id="albert-chatbox" class="albert-hidden">
                 <div class="albert-header">
-                    <div class="albert-avatar">🤖</div>
+                    <div class="albert-avatar">👶</div>
                     <div>
                         <strong>Albert</strong>
                         <p>AXON Assistant</p>
@@ -22,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
     `;
+
+
+    
     document.body.insertAdjacentHTML("beforeend", widgetHTML);
 
     // 2. Query Elements
