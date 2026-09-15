@@ -1,781 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AXON Registration</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-
-font-family:'Roboto',sans-serif;
-
-background:
-linear-gradient(135deg,#edf7fc,#f8fbff);
-
-min-height:100vh;
-
-padding:40px 20px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-overflow-x:hidden;
-
-position:relative;
-
-}
-
-/* Floating Background */
-
-body::before{
-
-content:"";
-
-position:fixed;
-
-width:450px;
-height:450px;
-
-background:#4DC8F025;
-
-border-radius:50%;
-
-top:-150px;
-left:-120px;
-
-filter:blur(90px);
-
-animation:floatLeft 9s infinite ease-in-out;
-
-}
-
-body::after{
-
-content:"";
-
-position:fixed;
-
-width:380px;
-height:380px;
-
-background:#35b5e525;
-
-border-radius:50%;
-
-bottom:-120px;
-right:-100px;
-
-filter:blur(90px);
-
-animation:floatRight 8s infinite ease-in-out;
-
-}
-
-@keyframes floatLeft{
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(40px);
-
-}
-
-}
-
-@keyframes floatRight{
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-35px);
-
-}
-
-}
-
-.container{
-
-width:100%;
-
-max-width:760px;
-
-background:white;
-
-border-radius:24px;
-
-padding:45px;
-
-box-shadow:
-
-0 30px 80px rgba(0,0,0,.08);
-
-position:relative;
-
-animation:fadeIn .7s ease;
-
-}
-
-@keyframes fadeIn{
-
-from{
-
-opacity:0;
-
-transform:translateY(40px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-.container::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:6px;
-
-background:
-
-linear-gradient(
-90deg,
-#4DC8F0,
-#22c55e,
-#4DC8F0);
-
-background-size:300%;
-
-animation:borderMove 6s linear infinite;
-
-}
-
-@keyframes borderMove{
-
-100%{
-
-background-position:300%;
-
-}
-
-}
-
-h1{
-
-text-align:center;
-
-font-size:38px;
-
-color:#222;
-
-margin-bottom:8px;
-
-font-weight:700;
-
-}
-
-.course{
-
-text-align:center;
-
-font-size:24px;
-
-font-weight:700;
-
-color:#4DC8F0;
-
-margin-bottom:35px;
-
-}
-
-/* ===========================
-PROGRESS BAR
-=========================== */
-
-.progress-bar{
-
-height:8px;
-
-background:#edf2f7;
-
-border-radius:20px;
-
-margin-bottom:35px;
-
-overflow:hidden;
-
-}
-
-.progress-fill{
-
-width:35%;
-
-height:100%;
-
-background:linear-gradient(90deg,#4DC8F0,#35b5e5);
-
-border-radius:20px;
-
-animation:progressMove 2s infinite alternate;
-
-}
-
-@keyframes progressMove{
-
-from{
-
-width:25%;
-
-}
-
-to{
-
-width:35%;
-
-}
-
-}
-
-/* ===========================
-INPUT GROUP
-=========================== */
-
-.input-group{
-
-position:relative;
-
-margin-bottom:28px;
-
-}
-
-.input-group input,
-.input-group textarea,
-.input-group select{
-
-width:100%;
-
-padding:18px 16px;
-
-font-size:16px;
-
-border:2px solid #e5e7eb;
-
-border-radius:12px;
-
-background:white;
-
-transition:.3s;
-
-outline:none;
-
-}
-
-.input-group input:focus,
-.input-group textarea:focus,
-.input-group select:focus{
-
-border-color:#4DC8F0;
-
-box-shadow:
-
-0 0 0 4px rgba(77,200,240,.12);
-
-}
-
-.input-group label{
-
-position:absolute;
-
-left:16px;
-
-top:18px;
-
-background:white;
-
-padding:0 6px;
-
-color:#888;
-
-transition:.25s;
-
-pointer-events:none;
-
-}
-
-.input-group input:focus+label,
-.input-group input:not(:placeholder-shown)+label,
-.input-group textarea:focus+label,
-.input-group textarea:not(:placeholder-shown)+label,
-.input-group select:focus+label,
-.input-group select:valid+label{
-
-top:-10px;
-
-font-size:13px;
-
-color:#4DC8F0;
-
-font-weight:700;
-
-}
-
-/* ===========================
-COURSE SUMMARY
-=========================== */
-
-.course-summary{
-
-background:#f8fcff;
-
-border:1px solid #dbeafe;
-
-padding:22px;
-
-border-radius:16px;
-
-margin:35px 0;
-
-}
-
-.course-summary h3{
-
-margin-bottom:18px;
-
-color:#222;
-
-}
-
-.summary-row{
-
-display:flex;
-
-justify-content:space-between;
-
-padding:10px 0;
-
-border-bottom:1px solid #eef2f7;
-
-}
-
-.summary-row:last-child{
-
-border-bottom:none;
-
-}
-
-.summary-row span{
-
-color:#666;
-
-}
-
-.summary-row strong{
-
-color:#111;
-
-}
-
-/* ===========================
-BUTTON
-=========================== */
-
-button{
-
-width:100%;
-
-padding:18px;
-
-border:none;
-
-border-radius:14px;
-
-background:linear-gradient(
-135deg,
-#4DC8F0,
-#35b5e5);
-
-font-size:18px;
-
-font-weight:700;
-
-color:white;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-button:hover{
-
-transform:translateY(-3px);
-
-box-shadow:
-
-0 18px 35px rgba(77,200,240,.28);
-
-}
-
-.input-group input,
-.input-group textarea,
-.input-group select{
-
-transition:
-.3s,
-transform .25s;
-
-}
-
-.input-group input:focus,
-.input-group textarea:focus,
-.input-group select:focus{
-
-transform:translateY(-2px);
-
-}
-
-button{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-button::before{
-
-content:"";
-
-position:absolute;
-
-left:-120%;
-
-top:0;
-
-width:120%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.35),
-transparent);
-
-transition:.8s;
-
-}
-
-button:hover::before{
-
-left:130%;
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXON Academy - Student Portal</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External Chatbot CSS (preserves original requirement) -->
+    <link rel="stylesheet" href="js/albert.css">
+
+    <style>
+        /* =========================================
+           GLOBAL & GRIDLINE BACKGROUND
+        ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6f9;
+            /* Academic Blueprint / Notebook Gridline Pattern */
+            background-image: 
+                linear-gradient(to right, rgba(30, 58, 138, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(30, 58, 138, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1e293b;
+        }
+
+        /* =========================================
+           MAIN CONTAINER & CARD
+        ========================================= */
+        .portal-card {
+            width: 100%;
+            max-width: 680px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Academic Top Header Accent Bar */
+        .portal-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+        }
+
+        .portal-body {
+            padding: 40px;
+        }
+
+        /* =========================================
+           HEADER SECTION
+        ========================================= */
+        .school-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .school-badge svg {
+            width: 28px;
+            height: 28px;
+            fill: #1e3a8a;
+        }
+
+        .school-badge span {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #1e3a8a;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .course-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 24px;
+        }
+
+        /* =========================================
+           PROGRESS BAR
+        ========================================= */
+        .progress-wrapper {
+            margin-bottom: 30px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #2563eb;
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        /* =========================================
+           FORM & FLOATING INPUTS
+        ========================================= */
+        .input-group {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .input-group input,
+        .input-group textarea,
+        .input-group select {
+            width: 100%;
+            padding: 16px;
+            font-family: inherit;
+            font-size: 15px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #0f172a;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .input-group label {
+            position: absolute;
+            left: 14px;
+            top: 16px;
+            background: #ffffff;
+            padding: 0 4px;
+            color: #64748b;
+            font-size: 15px;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+
+        /* Floating label trigger rules */
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label,
+        .input-group textarea:focus ~ label,
+        .input-group textarea:not(:placeholder-shown) ~ label,
+        .input-group select:focus ~ label,
+        .input-group select:valid ~ label {
+            top: -9px;
+            font-size: 12px;
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus,
+        .input-group select:focus {
+            border-color: #1e3a8a;
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .input-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .input-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2364748b" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        /* Validation Colors */
+        .input-group input.is-valid { border-color: #16a34a; }
+        .input-group input.is-invalid { border-color: #dc2626; }
+
+        /* =========================================
+           ENROLLMENT SUMMARY CARD
+        ========================================= */
+        .course-summary {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .course-summary h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #475569;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            padding: 8px 0;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-row span { color: #64748b; }
+        .summary-row strong { color: #0f172a; font-weight: 600; }
+
+        /* =========================================
+           SUBMIT BUTTON & LINKS
+        ========================================= */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #1e3a8a;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-submit:hover {
+            background: #1e40af;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.99);
+        }
+
+        .btn-submit:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-link a:hover {
+            color: #1e3a8a;
+        }
+
+        /* Responsive Mobile Layout */
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            .portal-body { padding: 24px 18px; }
+            h1 { font-size: 24px; }
+            .summary-row { flex-direction: column; gap: 2px; }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="portal-card">
+    <div class="portal-body">
 
-<h1>Student Registration</h1>
+        <!-- SCHOOL BADGE HEADER -->
+        <div class="school-badge">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 2.44L18.74 9 12 12.56 5.26 9 12 5.44zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/>
+            </svg>
+            <span>Axon Academy</span>
+        </div>
 
-<div class="course" id="courseTitle"></div>
+        <h1>Student Registration</h1>
+        <div class="course-title" id="courseTitle">Course: Loading...</div>
 
+        <!-- ENROLLMENT FORM -->
+        <form id="registrationForm" novalidate>
 
+            <!-- REAL-TIME PROGRESS BAR -->
+            <div class="progress-wrapper">
+                <div class="progress-label">
+                    <span>Form Completion</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
 
-<form id="registrationForm">
+            <!-- FULL NAME -->
+            <div class="input-group">
+                <input id="name" type="text" required placeholder=" " autocomplete="name">
+                <label for="name">Full Name</label>
+            </div>
 
-    <div class="progress-bar">
-    
-    <div class="progress-fill"></div>
-    
+            <!-- EMAIL -->
+            <div class="input-group">
+                <input id="email" type="email" required placeholder=" " autocomplete="email">
+                <label for="email">Email Address</label>
+            </div>
+
+            <!-- PHONE -->
+            <div class="input-group">
+                <input id="phone" type="tel" required pattern="[0-9]{11}" maxlength="11" placeholder=" " autocomplete="tel">
+                <label for="phone">Phone Number (11 Digits)</label>
+            </div>
+
+            <!-- GENDER SELECT -->
+            <div class="input-group">
+                <select id="gender" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label for="gender">Gender</label>
+            </div>
+
+            <!-- ADDITIONAL INFORMATION -->
+            <div class="input-group">
+                <textarea id="message" rows="3" placeholder=" "></textarea>
+                <label for="message">Additional Notes (Optional)</label>
+            </div>
+
+            <!-- COURSE SUMMARY BOX -->
+            <div class="course-summary">
+                <h3>Enrollment Summary</h3>
+                <div class="summary-row">
+                    <span>Selected Course</span>
+                    <strong id="summaryCourse">--</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Training Mode</span>
+                    <strong>Physical / Online</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Certification</span>
+                    <strong>Official Academic Certificate</strong>
+                </div>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <button type="submit" class="btn-submit" id="submitBtn">
+                Proceed to Secure Registration &rarr;
+            </button>
+
+        </form>
+
+        <div class="back-link">
+            <a href="index.html">&larr; Back to Portal Home</a>
+        </div>
+
     </div>
-    
-    <div class="input-group">
-    
-    <input
-    id="name"
-    type="text"
-    required
-    placeholder=" ">
-    
-    <label for="name">
-    
-    Full Name
-    
-    </label>
-    
-    </div>
-    
-    <div class="input-group">
-    
-    <input
-    id="email"
-    type="email"
-    required
-    placeholder=" ">
-    
-    <label for="email">
-    
-    Email Address
-    
-    </label>
-    
-    </div>
-    
-    <div class="input-group">
-    
-    <input
-    id="phone"
-    type="tel"
-    required
-    pattern="[0-9]{11}"
-    placeholder=" ">
-    
-    <label for="phone">
-    
-    Phone Number
-    
-    </label>
-    
-    </div>
-    
-    <div class="input-group">
-    
-    <select
-    id="gender"
-    required>
-    
-    <option value=""></option>
-    
-    <option>Male</option>
-    
-    <option>Female</option>
-    
-    </select>
-    
-    <label for="gender">
-    
-    Gender
-    
-    </label>
-    
-    </div>
-    
-    <div class="input-group">
-    
-    <textarea
-    id="message"
-    rows="4"
-    placeholder=" "></textarea>
-    
-    <label for="message">
-    
-    Additional Information (Optional)
-    
-    </label>
-    
-    </div>
-    
-    <div class="course-summary">
-    
-    <h3>
-    
-    Enrollment Summary
-    
-    </h3>
-    
-    <div class="summary-row">
-    
-    <span>Selected Course</span>
-    
-    <strong id="summaryCourse"></strong>
-    
-    </div>
-    
-    <div class="summary-row">
-    
-    <span>Training Mode</span>
-    
-    <strong>Physical / Online</strong>
-    
-    </div>
-    
-    <div class="summary-row">
-    
-    <span>Certificate</span>
-    
-    <strong>Included</strong>
-    
-    </div>
-    
-    </div>
-    
-    <button
-    type="submit"
-    id="submitBtn">
-    
-    Continue Securely →
-    
-    </button>
-    
-    </form>
-
-<div class="back">
-
-<a href="index.html">
-
-← Back to Home
-
-</a>
-
-</div>
-
 </div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        /* =========================================
+           1. COURSE SELECTION & QUERY PARSER
+        ========================================= */
+        const params = new URLSearchParams(window.location.search);
+        let course = params.get("type");
 
-const params = new URLSearchParams(window.location.search);
+        // Fallback for direct testing without URL parameters
+        if (!course) {
+            course = "General Information Technology"; 
+        }
 
-const course = params.get("type") || "Selected Course";
+        document.getElementById("courseTitle").textContent = course;
+        document.getElementById("summaryCourse").textContent = course;
 
-document.getElementById("courseTitle").innerHTML = decodeURIComponent(course);
+        /* =========================================
+           2. INPUT FORMATTING & VALIDATION
+        ========================================= */
+        const phoneInput = document.getElementById("phone");
+        const emailInput = document.getElementById("email");
+        const nameInput = document.getElementById("name");
+        const genderInput = document.getElementById("gender");
+        const progressFill = document.getElementById("progressFill");
+        const progressPercent = document.getElementById("progressPercent");
 
-document.getElementById("summaryCourse").innerHTML = decodeURIComponent(course);
+        // Format phone to numbers only
+        phoneInput.addEventListener("input", function() {
+            this.value = this.value.replace(/\D/g, "").slice(0, 11);
+            updateProgress();
+        });
 
+        // Email Real-time visual validation
+        emailInput.addEventListener("input", function() {
+            const validPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.value === "") {
+                this.classList.remove("is-valid", "is-invalid");
+            } else if (validPattern.test(this.value)) {
+                this.classList.add("is-valid");
+                this.classList.remove("is-invalid");
+            } else {
+                this.classList.add("is-invalid");
+                this.classList.remove("is-valid");
+            }
+            updateProgress();
+        });
 
-// ===========================
-// Phone Formatting
-// ===========================
+        nameInput.addEventListener("input", updateProgress);
+        genderInput.addEventListener("change", updateProgress);
 
-const phoneInput = document.getElementById("phone");
+        /* =========================================
+           3. DYNAMIC FORM PROGRESS
+        ========================================= */
+        function updateProgress() {
+            let filledFields = 0;
+            const totalRequired = 4; // Name, Email, Phone, Gender
 
-phoneInput.addEventListener("input", function () {
+            if (nameInput.value.trim() !== "") filledFields++;
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) filledFields++;
+            if (phoneInput.value.length === 11) filledFields++;
+            if (genderInput.value !== "") filledFields++;
 
-    this.value = this.value.replace(/\D/g, "");
+            const percentage = Math.round((filledFields / totalRequired) * 100);
+            progressFill.style.width = percentage + "%";
+            progressPercent.textContent = percentage + "%";
+        }
 
-    if (this.value.length > 11) {
+        /* =========================================
+           4. FORM SUBMISSION HANDLER
+        ========================================= */
+        document.getElementById("registrationForm").addEventListener("submit", function(e) {
+            e.preventDefault();
 
-        this.value = this.value.slice(0, 11);
+            const submitBtn = document.getElementById("submitBtn");
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Processing Enrollment...";
 
-    }
+            const payload = {
+                course: course,
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                phone: phoneInput.value.trim(),
+                gender: genderInput.value,
+                message: document.getElementById("message").value.trim()
+            };
 
-});
-
-
-// ===========================
-// Email Validation
-// ===========================
-
-const emailInput = document.getElementById("email");
-
-emailInput.addEventListener("input", function () {
-
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (this.value === "") {
-
-        this.style.borderColor = "#ddd";
-
-    }
-
-    else if (valid.test(this.value)) {
-
-        this.style.borderColor = "#28c76f";
-
-    }
-
-    else {
-
-        this.style.borderColor = "#ef4444";
-
-    }
-
-});
-
-
-// ===========================
-// Registration Submit
-// ===========================
-
-document.getElementById("registrationForm").addEventListener("submit", function(e){
-
-    e.preventDefault();
-
-    const btn = document.getElementById("submitBtn");
-
-    btn.disabled = true;
-
-    btn.innerHTML = "Preparing Payment...";
-
-    const name = document.getElementById("name").value.trim();
-
-    const email = document.getElementById("email").value.trim();
-
-    const phone = document.getElementById("phone").value.replace(/\D/g, "");
-
-    const gender = document.getElementById("gender").value;
-
-    const message = document.getElementById("message").value;
-
-    setTimeout(() => {
-
-        window.location.href =
-        `payment.html?course=${encodeURIComponent(course)}
-        &name=${encodeURIComponent(name)}
-        &email=${encodeURIComponent(email)}
-        &phone=${encodeURIComponent(phone)}
-        &gender=${encodeURIComponent(gender)}
-        &message=${encodeURIComponent(message)}`;
-
-    },1000);
-
-});
-
+            setTimeout(() => {
+                const queryStr = new URLSearchParams(payload).toString();
+                window.location.href = `payment.html?${queryStr}`;
+            }, 1000);
+        });
+    });
 </script>
-<!-- ✅ Updated line 40 -->
+
+<!-- ALBERT CHATBOT SCRIPT -->
 <script src="js/albert.js"></script>
+
 </body>
 </html>
