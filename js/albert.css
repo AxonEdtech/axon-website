@@ -1,0 +1,365 @@
+/* =========================================
+   AXON ALBERT CHATBOT
+   Isolated chatbot styling
+========================================= */
+
+#albert-widget {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 99999;
+    font-family: Arial, sans-serif;
+}
+
+/* =========================================
+   CHAT BUTTON
+========================================= */
+
+#albert-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border: none;
+    border-radius: 50px;
+
+    padding: 12px 18px;
+
+    background: linear-gradient(
+        135deg,
+        #4DC8F0,
+        #35b5e5
+    );
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.18);
+
+    transition: .3s ease;
+}
+
+#albert-toggle:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(77,200,240,.35);
+}
+
+.albert-icon {
+    font-size: 24px;
+}
+
+.albert-label {
+    white-space: nowrap;
+}
+
+/* =========================================
+   CHATBOX
+========================================= */
+
+#albert-chatbox {
+    position: absolute;
+
+    right: 0;
+    bottom: 70px;
+
+    width: 350px;
+    max-width: calc(100vw - 30px);
+
+    height: 500px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.20);
+
+    display: flex;
+    flex-direction: column;
+
+    animation: albertOpen .3s ease;
+}
+
+@keyframes albertOpen {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* =========================================
+   HIDDEN STATE
+========================================= */
+
+.albert-hidden {
+    display: none !important;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+#albert-chatbox .albert-header {
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px;
+
+    background: linear-gradient(
+        135deg,
+        #4DC8F0,
+        #35b5e5
+    );
+
+    color: white;
+}
+
+.albert-avatar {
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    border-radius: 50%;
+
+    font-size: 24px;
+}
+
+#albert-chatbox .albert-header strong {
+
+    display: block;
+
+    font-size: 17px;
+}
+
+#albert-chatbox .albert-header p {
+
+    margin: 3px 0 0;
+
+    font-size: 12px;
+
+    opacity: .9;
+}
+
+#albert-close {
+
+    margin-left: auto;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    background: rgba(255,255,255,.18);
+
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+#albert-close:hover {
+
+    background: rgba(255,255,255,.3);
+}
+
+/* =========================================
+   MESSAGES
+========================================= */
+
+#albert-messages {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 18px;
+
+    background: #f7fafc;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.albert-msg {
+
+    max-width: 82%;
+
+    padding: 11px 14px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    word-wrap: break-word;
+}
+
+.albert-msg.bot {
+
+    align-self: flex-start;
+
+    background: white;
+
+    color: #1f2937;
+
+    border: 1px solid #e5e7eb;
+
+    border-bottom-left-radius: 4px;
+}
+
+.albert-msg.user {
+
+    align-self: flex-end;
+
+    background: #4DC8F0;
+
+    color: white;
+
+    border-bottom-right-radius: 4px;
+}
+
+.albert-msg.loading {
+
+    opacity: .65;
+
+    font-style: italic;
+}
+
+/* =========================================
+   CHAT FORM
+========================================= */
+
+#albert-form {
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 12px;
+
+    background: white;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+#albert-input {
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 11px 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+#albert-input:focus {
+
+    border-color: #4DC8F0;
+
+    box-shadow:
+        0 0 0 3px rgba(77,200,240,.12);
+}
+
+#albert-form button {
+
+    padding: 11px 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #4DC8F0;
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+#albert-form button:hover {
+
+    background: #35b5e5;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    #albert-widget {
+
+        right: 15px;
+        bottom: 15px;
+
+    }
+
+    #albert-chatbox {
+
+        width: calc(100vw - 30px);
+
+        height: 70vh;
+
+        max-height: 520px;
+
+        right: 0;
+
+        bottom: 65px;
+
+    }
+
+    #albert-toggle {
+
+        padding: 12px 15px;
+
+    }
+
+    .albert-label {
+
+        font-size: 14px;
+
+    }
+
+}

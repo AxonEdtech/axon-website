@@ -8,6 +8,7 @@
 <title>AXON Secure Payment</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="js/albert.css">
 
 <style>
 *{
@@ -629,139 +630,267 @@ left:140%;
     </div>
 
 
-    <script>
 
-        const params = new URLSearchParams(window.location.search);
-        
-        const course = params.get("course");
-        const name = params.get("name");
-        const email = params.get("email");
-        const phone = params.get("phone");
-        
-        const amountMap={
-        
-        "Microsoft Word":35000,
-        "Microsoft Excel":45000,
-        "PowerPoint":35000,
-        "CorelDRAW":55000,
-        "Photoshop":60000,
-        "Desktop Publishing":50000,
-        "Secretariat Studies":40000,
-        "Data Analysis":65000,
-        "Ethical Hacking":85000,
-        "Cybersecurity":70000,
-        "Digital Marketing":55000,
-        "UI/UX Design":75000,
-        "Web Development":80000,
-        "Python Programming":70000,
-        "Data Science":90000,
-        "NYSC Registration":15000,
-        "JAMB Registration":8000,
-        "WAEC and NECO":12000,
-        "CAC Registration":25000,
-        "Type Setting":10000,
-        "Printing and Photocopy":5000,
-        "Printing Press":30000,
-        "Computer Repair":15000,
-        "Computer Sales":0,
-        "Graphic Design":25000,
-        "Letter Heading":12000,
-        "Passport Photograph":3000,
-        "Web3 and Smart Contract Systems":40000
-        
-        };
-        
-        const amount = amountMap[course] || 0;
-        
-        if(!course || !name || !email){
-        
-        alert("Registration details are missing.");
-        
-        window.location.href="index.html";
-        
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const course = params.get("course");
+const name = params.get("name");
+const email = params.get("email");
+const phone = params.get("phone");
+
+
+/* =========================================
+   AXON COURSE PRICES
+========================================= */
+
+const amountMap = {
+
+    "Microsoft Word": 35000,
+    "Microsoft Excel": 45000,
+    "PowerPoint": 35000,
+    "CorelDRAW": 55000,
+    "Photoshop": 60000,
+    "Desktop Publishing": 50000,
+    "Secretariat Studies": 40000,
+    "Data Analysis": 65000,
+    "Ethical Hacking": 85000,
+    "Cybersecurity": 70000,
+    "Digital Marketing": 55000,
+    "UI/UX Design": 75000,
+    "Web Development": 80000,
+    "Python Programming": 70000,
+    "Data Science": 90000,
+
+    "NYSC Registration": 15000,
+    "JAMB Registration": 8000,
+    "WAEC and NECO": 12000,
+    "CAC Registration": 25000,
+
+    "Type Setting": 10000,
+    "Printing and Photocopy": 5000,
+    "Printing Press": 30000,
+    "Computer Repair": 15000,
+    "Computer Sales": 0,
+
+    "Graphic Design": 25000,
+    "Letter Heading": 12000,
+    "Passport Photograph": 3000,
+
+    "Web3 and Smart Contract Systems": 40000
+
+};
+
+
+/* =========================================
+   NORMALIZE COURSE NAME
+========================================= */
+
+const normalizedCourse = course
+    ? course.trim().replace(/\s+/g, " ")
+    : "";
+
+
+/* =========================================
+   FIND COURSE
+   Handles capitalization differences
+========================================= */
+
+const courseKey = Object.keys(amountMap).find(
+    key => key.toLowerCase() === normalizedCourse.toLowerCase()
+);
+
+
+/* =========================================
+   GET PRICE
+========================================= */
+
+const amount = courseKey !== undefined
+    ? amountMap[courseKey]
+    : undefined;
+
+
+/* =========================================
+   VALIDATE REGISTRATION
+========================================= */
+
+if (!course || !name || !email) {
+
+    alert("Registration details are missing.");
+
+    window.location.href = "index.html";
+
+    throw new Error("Missing registration details.");
+
+}
+
+
+/* =========================================
+   VALIDATE COURSE
+========================================= */
+
+if (amount === undefined) {
+
+    alert(
+        "The selected course could not be identified. " +
+        "Please return to the course page and try again."
+    );
+
+    window.location.href = "index.html";
+
+    throw new Error(
+        "Invalid course selected: " + normalizedCourse
+    );
+
+}
+
+
+/* =========================================
+   DISPLAY REGISTRATION INFORMATION
+========================================= */
+
+document.getElementById("course").textContent =
+    normalizedCourse;
+
+document.getElementById("name").textContent =
+    name;
+
+document.getElementById("email").textContent =
+    email;
+
+document.getElementById("phone").textContent =
+    phone || "Not provided";
+
+
+/* =========================================
+   DISPLAY COURSE PRICE
+========================================= */
+
+document.getElementById("totalAmount").textContent =
+    "₦" + amount.toLocaleString();
+
+
+/* =========================================
+   START PAYSTACK PAYMENT
+========================================= */
+
+async function startPayment() {
+
+    const button = document.getElementById("payBtn");
+
+    button.disabled = true;
+
+    button.textContent =
+        "⏳ Connecting to Paystack...";
+
+
+    try {
+
+        const response = await fetch(
+            "/api/initialize-payment",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    course: normalizedCourse,
+                    name: name,
+                    email: email,
+                    phone: phone
+
+                })
+            }
+        );
+
+
+        const result = await response.json();
+
+
+        /* =========================================
+           PAYMENT INITIALIZED
+        ========================================= */
+
+        if (
+            result.status &&
+            result.data &&
+            result.data.authorization_url
+        ) {
+
+            button.textContent =
+                "✅ Redirecting...";
+
+
+            setTimeout(() => {
+
+                window.location.href =
+                    result.data.authorization_url;
+
+            }, 700);
+
         }
-        
-        document.getElementById("course").innerHTML = decodeURIComponent(course);
-        document.getElementById("name").innerHTML = decodeURIComponent(name);
-        document.getElementById("email").innerHTML = email;
-        document.getElementById("phone").innerHTML = phone;
-        
-        document.getElementById("totalAmount").innerHTML =
-        "₦"+amount.toLocaleString();
-        
-        async function startPayment(){
-        
-        const button=document.getElementById("payBtn");
-        
-        button.disabled=true;
-        
-        button.innerHTML="⏳ Connecting to Paystack...";
-        
-        try{
-        
-        const response=await fetch("/api/initialize-payment",{
-        
-        method:"POST",
-        
-        headers:{
-        
-        "Content-Type":"application/json"
-        
-        },
-        
-        body:JSON.stringify({
-        
-        course,
-        name,
-        email,
-        phone
-        
-        })
-        
-        });
-        
-        const result=await response.json();
-        
-        if(result.status){
-        
-        button.innerHTML="✅ Redirecting...";
-        
-        setTimeout(()=>{
-        
-        window.location.href=result.data.authorization_url;
-        
-        },700);
-        
+
+
+        /* =========================================
+           PAYMENT INITIALIZATION FAILED
+        ========================================= */
+
+        else {
+
+            console.error(
+                "Paystack initialization failed:",
+                result
+            );
+
+            alert(
+                result.message ||
+                "Unable to initialize payment."
+            );
+
+            button.disabled = false;
+
+            button.textContent =
+                "🔒 Pay Securely";
+
         }
+
+    }
+
+
+    /* =========================================
+       CONNECTION ERROR
+    ========================================= */
+
+    catch (error) {
+
+        console.error(
+            "Payment connection error:",
+            error
+        );
+
+        alert(
+            "Unable to connect to the payment server.\n" +
+            "Please try again."
+        );
+
+        button.disabled = false;
+
+        button.textContent =
+            "🔒 Pay Securely";
+
+    }
+
+}
+
+</script>
         
-        else{
-        
-        alert(result.message || "Unable to initialize payment.");
-        
-        button.disabled=false;
-        
-        button.innerHTML="🔒 Pay Securely";
-        
-        }
-        
-        }
-        
-        catch(error){
-        
-        console.error(error);
-        
-        alert("Unable to connect to the payment server.\nPlease try again.");
-        
-        button.disabled=false;
-        
-        button.innerHTML="🔒 Pay Securely";
-        
-        }
-        
-        }
-        
-        </script>
 <!-- ✅ Updated line 40 -->
 <script src="js/albert.js"></script>
+
 </body>
 </html>
