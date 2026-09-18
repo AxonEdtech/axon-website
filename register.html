@@ -3,502 +3,1233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AXON Academy - Student Portal</title>
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- External Chatbot CSS (preserves original requirement) -->
+
+    <!-- Albert Chatbot CSS -->
     <link rel="stylesheet" href="js/albert.css">
 
     <style>
         /* =========================================
-           GLOBAL & GRIDLINE BACKGROUND
+           GLOBAL
         ========================================= */
-        * {
-            margin: 0;
-            padding: 0;
+
+        #axon-registration-page,
+        #axon-registration-page * {
             box-sizing: border-box;
         }
 
-        body {
+        #axon-registration-page {
+            margin: 0;
+            padding: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #f4f6f9;
-            /* Academic Blueprint / Notebook Gridline Pattern */
-            background-image: 
-                linear-gradient(to right, rgba(30, 58, 138, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(30, 58, 138, 0.05) 1px, transparent 1px);
-            background-size: 24px 24px;
+            color: #1e293b;
+        }
+
+        #axon-registration-page .axon-page {
             min-height: 100vh;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #1e293b;
+
+            background-color: #f4f6f9;
+
+            background-image:
+                linear-gradient(
+                    to right,
+                    rgba(30, 58, 138, 0.05) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    rgba(30, 58, 138, 0.05) 1px,
+                    transparent 1px
+                );
+
+            background-size: 24px 24px;
         }
+
 
         /* =========================================
-           MAIN CONTAINER & CARD
+           MAIN CONTAINER
         ========================================= */
-        .portal-card {
+
+        #axon-registration-page .portal-card {
             width: 100%;
             max-width: 680px;
+
             background: #ffffff;
+
             border-radius: 12px;
             border: 1px solid #cbd5e1;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
+            box-shadow:
+                0 10px 25px -5px rgba(0, 0, 0, 0.05),
+                0 8px 10px -6px rgba(0, 0, 0, 0.05);
+
             position: relative;
             overflow: hidden;
-            animation: fadeIn 0.5s ease-out;
+
+            animation: axonFadeIn 0.5s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes axonFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Academic Top Header Accent Bar */
-        .portal-card::before {
+
+        /* =========================================
+           TOP ACCENT BAR
+        ========================================= */
+
+        #axon-registration-page .portal-card::before {
             content: "";
+
             position: absolute;
             top: 0;
             left: 0;
+
             width: 100%;
             height: 6px;
-            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #1e3a8a);
+
+            background: linear-gradient(
+                90deg,
+                #1e3a8a,
+                #3b82f6,
+                #1e3a8a
+            );
         }
 
-        .portal-body {
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        #axon-registration-page .portal-body {
             padding: 40px;
         }
 
+
         /* =========================================
-           HEADER SECTION
+           HEADER
         ========================================= */
-        .school-badge {
+
+        #axon-registration-page .school-badge {
             display: flex;
             align-items: center;
             justify-content: center;
+
             gap: 8px;
             margin-bottom: 12px;
         }
 
-        .school-badge svg {
+        #axon-registration-page .school-badge svg {
             width: 28px;
             height: 28px;
             fill: #1e3a8a;
         }
 
-        .school-badge span {
+        #axon-registration-page .school-badge span {
             font-size: 13px;
             font-weight: 700;
+
             letter-spacing: 1.5px;
             text-transform: uppercase;
+
             color: #1e3a8a;
         }
 
-        h1 {
+        #axon-registration-page h1 {
+            margin: 0 0 4px;
+
             text-align: center;
+
             font-size: 28px;
-            color: #0f172a;
             font-weight: 700;
-            margin-bottom: 4px;
+
+            color: #0f172a;
         }
 
-        .course-title {
+        #axon-registration-page .course-title {
+            margin-bottom: 24px;
+
             text-align: center;
+
             font-size: 16px;
             font-weight: 600;
+
             color: #2563eb;
-            margin-bottom: 24px;
         }
+
 
         /* =========================================
            PROGRESS BAR
         ========================================= */
-        .progress-wrapper {
+
+        #axon-registration-page .progress-wrapper {
             margin-bottom: 30px;
         }
 
-        .progress-label {
+        #axon-registration-page .progress-label {
             display: flex;
             justify-content: space-between;
+
+            margin-bottom: 6px;
+
             font-size: 12px;
             font-weight: 600;
+
             color: #64748b;
-            margin-bottom: 6px;
         }
 
-        .progress-bar {
+        #axon-registration-page .progress-bar {
+            width: 100%;
             height: 6px;
+
             background: #e2e8f0;
+
             border-radius: 10px;
             overflow: hidden;
         }
 
-        .progress-fill {
+        #axon-registration-page .progress-fill {
             width: 0%;
             height: 100%;
+
             background: #2563eb;
+
             border-radius: 10px;
+
             transition: width 0.4s ease;
         }
 
+
         /* =========================================
-           FORM & FLOATING INPUTS
+           FORM
         ========================================= */
-        .input-group {
+
+        #axon-registration-page .input-group {
             position: relative;
             margin-bottom: 24px;
         }
 
-        .input-group input,
-        .input-group textarea,
-        .input-group select {
+
+        /* =========================================
+           INPUT / TEXTAREA / SELECT
+        ========================================= */
+
+        #axon-registration-page .input-group input,
+        #axon-registration-page .input-group textarea,
+        #axon-registration-page .input-group select {
             width: 100%;
+
             padding: 16px;
+
             font-family: inherit;
             font-size: 15px;
+
             border: 1.5px solid #cbd5e1;
             border-radius: 8px;
+
             background: #ffffff;
             color: #0f172a;
+
             outline: none;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
-        .input-group label {
-            position: absolute;
-            left: 14px;
-            top: 16px;
-            background: #ffffff;
-            padding: 0 4px;
-            color: #64748b;
-            font-size: 15px;
-            pointer-events: none;
-            transition: all 0.2s ease;
+
+        /* =========================================
+           PLACEHOLDERS
+        ========================================= */
+
+        #axon-registration-page .input-group input::placeholder,
+        #axon-registration-page .input-group textarea::placeholder {
+            color: #94a3b8;
+            opacity: 1;
+
+            transition: opacity 0.2s ease;
         }
 
-        /* Floating label trigger rules */
-        .input-group input:focus ~ label,
-        .input-group input:not(:placeholder-shown) ~ label,
-        .input-group textarea:focus ~ label,
-        .input-group textarea:not(:placeholder-shown) ~ label,
-        .input-group select:focus ~ label,
-        .input-group select:valid ~ label {
+        /* Hide placeholder when focused */
+
+        #axon-registration-page .input-group input:focus::placeholder,
+        #axon-registration-page .input-group textarea:focus::placeholder {
+            opacity: 0;
+        }
+
+
+        /* =========================================
+           LABELS
+        ========================================= */
+
+        /* =========================================
+   FIELD LABELS
+   Labels remain available for accessibility,
+   while placeholders provide the visual prompt.
+========================================= */
+
+#axon-registration-page .input-group label {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+
+        /* =========================================
+           FLOATING LABELS
+        ========================================= */
+
+        #axon-registration-page .input-group input:focus + label,
+        #axon-registration-page .input-group input:not(:placeholder-shown) + label,
+
+        #axon-registration-page .input-group textarea:focus + label,
+        #axon-registration-page .input-group textarea:not(:placeholder-shown) + label,
+
+        #axon-registration-page .input-group select:focus + label,
+        #axon-registration-page .input-group select:valid + label {
             top: -9px;
+
             font-size: 12px;
-            color: #1e3a8a;
             font-weight: 600;
+
+            color: #1e3a8a;
         }
 
-        .input-group input:focus,
-        .input-group textarea:focus,
-        .input-group select:focus {
+
+        /* =========================================
+           FOCUS STATE
+        ========================================= */
+
+        #axon-registration-page .input-group input:focus,
+        #axon-registration-page .input-group textarea:focus,
+        #axon-registration-page .input-group select:focus {
             border-color: #1e3a8a;
-            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+
+            box-shadow:
+                0 0 0 3px rgba(30, 58, 138, 0.1);
         }
 
-        .input-group textarea {
+
+        /* =========================================
+           TEXTAREA
+        ========================================= */
+
+        #axon-registration-page .input-group textarea {
             resize: vertical;
             min-height: 100px;
         }
 
-        .input-group select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2364748b" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-        }
-
-        /* Validation Colors */
-        .input-group input.is-valid { border-color: #16a34a; }
-        .input-group input.is-invalid { border-color: #dc2626; }
 
         /* =========================================
-           ENROLLMENT SUMMARY CARD
+           SELECT
         ========================================= */
-        .course-summary {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 24px;
+
+        #axon-registration-page .input-group select {
+            cursor: pointer;
+
+            appearance: none;
+
+            background-image:
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748b' viewBox='0 0 16 16'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+
+            background-repeat: no-repeat;
+
+            background-position:
+                right 16px center;
         }
 
-        .course-summary h3 {
+
+        /* =========================================
+           VALIDATION COLORS
+        ========================================= */
+
+        #axon-registration-page .input-group input.is-valid {
+            border-color: #16a34a;
+        }
+
+        #axon-registration-page .input-group input.is-invalid {
+            border-color: #dc2626;
+        }
+
+
+        /* =========================================
+           ENROLLMENT SUMMARY
+        ========================================= */
+
+        #axon-registration-page .course-summary {
+            margin-bottom: 24px;
+
+            padding: 20px;
+
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 8px;
+        }
+
+        #axon-registration-page .course-summary h3 {
+            margin: 0 0 12px;
+
             font-size: 14px;
+
             text-transform: uppercase;
+
             letter-spacing: 0.5px;
+
             color: #475569;
-            margin-bottom: 12px;
+
             font-weight: 700;
         }
 
-        .summary-row {
+        #axon-registration-page .summary-row {
             display: flex;
+
             justify-content: space-between;
-            font-size: 14px;
+
             padding: 8px 0;
+
+            font-size: 14px;
+
             border-bottom: 1px dashed #cbd5e1;
         }
 
-        .summary-row:last-child {
+        #axon-registration-page .summary-row:last-child {
             border-bottom: none;
         }
 
-        .summary-row span { color: #64748b; }
-        .summary-row strong { color: #0f172a; font-weight: 600; }
+        #axon-registration-page .summary-row span {
+            color: #64748b;
+        }
+
+        #axon-registration-page .summary-row strong {
+            color: #0f172a;
+
+            font-weight: 600;
+        }
+
 
         /* =========================================
-           SUBMIT BUTTON & LINKS
+           ERROR MESSAGE
         ========================================= */
-        .btn-submit {
+
+        #axon-registration-page .form-error {
+            display: none;
+
+            margin-bottom: 18px;
+
+            padding: 12px 14px;
+
+            border-radius: 8px;
+
+            background: #fef2f2;
+
+            border: 1px solid #fecaca;
+
+            color: #b91c1c;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        #axon-registration-page .form-error.show {
+            display: block;
+        }
+
+
+        /* =========================================
+           SUBMIT BUTTON
+        ========================================= */
+
+        #axon-registration-page .btn-submit {
             width: 100%;
+
             padding: 16px;
+
             border: none;
             border-radius: 8px;
+
             background: #1e3a8a;
+
             font-family: inherit;
             font-size: 16px;
             font-weight: 600;
+
             color: #ffffff;
+
             cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.1s ease;
+
+            transition:
+                background-color 0.2s ease,
+                transform 0.1s ease;
         }
 
-        .btn-submit:hover {
+        #axon-registration-page .btn-submit:hover {
             background: #1e40af;
         }
 
-        .btn-submit:active {
+        #axon-registration-page .btn-submit:active {
             transform: scale(0.99);
         }
 
-        .btn-submit:disabled {
+        #axon-registration-page .btn-submit:disabled {
             background: #94a3b8;
+
             cursor: not-allowed;
+
+            transform: none;
         }
 
-        .back-link {
-            text-align: center;
+
+        /* =========================================
+           BACK LINK
+        ========================================= */
+
+        #axon-registration-page .back-link {
             margin-top: 20px;
+
+            text-align: center;
         }
 
-        .back-link a {
+        #axon-registration-page .back-link a {
             color: #64748b;
+
             text-decoration: none;
+
             font-size: 14px;
             font-weight: 500;
+
             transition: color 0.2s ease;
         }
 
-        .back-link a:hover {
+        #axon-registration-page .back-link a:hover {
             color: #1e3a8a;
         }
 
-        /* Responsive Mobile Layout */
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
         @media (max-width: 600px) {
-            body { padding: 15px; }
-            .portal-body { padding: 24px 18px; }
-            h1 { font-size: 24px; }
-            .summary-row { flex-direction: column; gap: 2px; }
+
+            #axon-registration-page .axon-page {
+                padding: 15px;
+            }
+
+            #axon-registration-page .portal-body {
+                padding: 24px 18px;
+            }
+
+            #axon-registration-page h1 {
+                font-size: 24px;
+            }
+
+            #axon-registration-page .summary-row {
+                flex-direction: column;
+                gap: 2px;
+            }
         }
     </style>
 </head>
 
+
 <body>
 
-<div class="portal-card">
-    <div class="portal-body">
+<div id="axon-registration-page">
 
-        <!-- SCHOOL BADGE HEADER -->
-        <div class="school-badge">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 2.44L18.74 9 12 12.56 5.26 9 12 5.44zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/>
-            </svg>
-            <span>Axon Academy</span>
-        </div>
+    <div class="axon-page">
 
-        <h1>Student Registration</h1>
-        <div class="course-title" id="courseTitle">Course: Loading...</div>
+        <div class="portal-card">
 
-        <!-- ENROLLMENT FORM -->
-        <form id="registrationForm" novalidate>
+            <div class="portal-body">
 
-            <!-- REAL-TIME PROGRESS BAR -->
-            <div class="progress-wrapper">
-                <div class="progress-label">
-                    <span>Form Completion</span>
-                    <span id="progressPercent">0%</span>
+                <!-- SCHOOL BADGE HEADER -->
+
+                <div class="school-badge">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 2.44L18.74 9 12 12.56 5.26 9 12 5.44zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/>
+                    </svg>
+
+                    <span>Axon Academy</span>
+
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+
+
+                <h1>Student Registration</h1>
+
+                <div class="course-title" id="courseTitle">
+                    Course: Loading...
                 </div>
-            </div>
 
-            <!-- FULL NAME -->
-            <div class="input-group">
-                <input id="name" type="text" required placeholder=" " autocomplete="name">
-                <label for="name">Full Name</label>
-            </div>
 
-            <!-- EMAIL -->
-            <div class="input-group">
-                <input id="email" type="email" required placeholder=" " autocomplete="email">
-                <label for="email">Email Address</label>
-            </div>
+                <!-- REGISTRATION FORM -->
 
-            <!-- PHONE -->
-            <div class="input-group">
-                <input id="phone" type="tel" required pattern="[0-9]{11}" maxlength="11" placeholder=" " autocomplete="tel">
-                <label for="phone">Phone Number (11 Digits)</label>
-            </div>
+                <form id="registrationForm" novalidate>
 
-            <!-- GENDER SELECT -->
-            <div class="input-group">
-                <select id="gender" required>
-                    <option value="" disabled selected hidden></option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
-                <label for="gender">Gender</label>
-            </div>
+                    <!-- PROGRESS -->
 
-            <!-- ADDITIONAL INFORMATION -->
-            <div class="input-group">
-                <textarea id="message" rows="3" placeholder=" "></textarea>
-                <label for="message">Additional Notes (Optional)</label>
-            </div>
+                    <div class="progress-wrapper">
 
-            <!-- COURSE SUMMARY BOX -->
-            <div class="course-summary">
-                <h3>Enrollment Summary</h3>
-                <div class="summary-row">
-                    <span>Selected Course</span>
-                    <strong id="summaryCourse">--</strong>
+                        <div class="progress-label">
+
+                            <span>Form Completion</span>
+
+                            <span id="progressPercent">0%</span>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="progressFill">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ERROR MESSAGE -->
+
+                    <div
+                        id="formError"
+                        class="form-error"
+                        role="alert">
+                    </div>
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="input-group">
+
+                        <input
+                            id="name"
+                            type="text"
+                            required
+                            placeholder="Enter your full name"
+                            autocomplete="name">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="input-group">
+
+                        <input
+                            id="email"
+                            type="email"
+                            required
+                            placeholder="Enter your email address"
+                            autocomplete="email">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="input-group">
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            required
+                            pattern="[0-9]{11}"
+                            maxlength="11"
+                            inputmode="numeric"
+                            placeholder="Enter your 11-digit phone number"
+                            autocomplete="tel">
+
+                        <label for="phone">
+                            Phone Number (11 Digits)
+                        </label>
+
+                    </div>
+
+
+                    <!-- GENDER -->
+
+                    <div class="input-group">
+
+                        <select
+                            id="gender"
+                            required>
+
+                            <option
+                                value=""
+                                disabled
+                                selected
+                                hidden>
+                                Select gender
+                            </option>
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                        <label for="gender">
+                            Gender
+                        </label>
+
+                    </div>
+
+
+                    <!-- ADDITIONAL INFORMATION -->
+
+                    <div class="input-group">
+
+                        <textarea
+                            id="message"
+                            rows="3"
+                            placeholder="Tell us anything else you would like us to know"></textarea>
+
+                        <label for="message">
+                            Additional Notes (Optional)
+                        </label>
+
+                    </div>
+
+
+                    <!-- COURSE SUMMARY -->
+
+                    <div class="course-summary">
+
+                        <h3>
+                            Enrollment Summary
+                        </h3>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Selected Course
+                            </span>
+
+                            <strong id="summaryCourse">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Training Mode
+                            </span>
+
+                            <strong>
+                                Physical / Online
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Certification
+                            </span>
+
+                            <strong>
+                                Official Academic Certificate
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="btn-submit"
+                        id="submitBtn">
+
+                        Proceed to Secure Registration &rarr;
+
+                    </button>
+
+                </form>
+
+
+                <!-- BACK LINK -->
+
+                <div class="back-link">
+
+                    <a href="index.html">
+                        &larr; Back to Portal Home
+                    </a>
+
                 </div>
-                <div class="summary-row">
-                    <span>Training Mode</span>
-                    <strong>Physical / Online</strong>
-                </div>
-                <div class="summary-row">
-                    <span>Certification</span>
-                    <strong>Official Academic Certificate</strong>
-                </div>
+
             </div>
 
-            <!-- SUBMIT BUTTON -->
-            <button type="submit" class="btn-submit" id="submitBtn">
-                Proceed to Secure Registration &rarr;
-            </button>
-
-        </form>
-
-        <div class="back-link">
-            <a href="index.html">&larr; Back to Portal Home</a>
         </div>
 
     </div>
+
 </div>
 
+
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        /* =========================================
-           1. COURSE SELECTION & QUERY PARSER
-        ========================================= */
-        const params = new URLSearchParams(window.location.search);
-        let course = params.get("type");
 
-        // Fallback for direct testing without URL parameters
-        if (!course) {
-            course = "General Information Technology"; 
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =========================================
+       1. COURSE SELECTION
+    ========================================= */
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    let course =
+        params.get("type");
+
+
+    // Fallback for direct testing
+
+    if (!course) {
+
+        course =
+            "General Information Technology";
+
+    }
+
+
+    course =
+        course.trim();
+
+
+    document.getElementById("courseTitle").textContent =
+        "Course: " + course;
+
+    document.getElementById("summaryCourse").textContent =
+        course;
+
+
+
+    /* =========================================
+       2. FORM ELEMENTS
+    ========================================= */
+
+    const form =
+        document.getElementById("registrationForm");
+
+    const nameInput =
+        document.getElementById("name");
+
+    const emailInput =
+        document.getElementById("email");
+
+    const phoneInput =
+        document.getElementById("phone");
+
+    const genderInput =
+        document.getElementById("gender");
+
+    const messageInput =
+        document.getElementById("message");
+
+    const submitBtn =
+        document.getElementById("submitBtn");
+
+    const progressFill =
+        document.getElementById("progressFill");
+
+    const progressPercent =
+        document.getElementById("progressPercent");
+
+    const formError =
+        document.getElementById("formError");
+
+
+
+    /* =========================================
+       3. EMAIL VALIDATION
+    ========================================= */
+
+    function isValidEmail(email) {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+            email.trim()
+        );
+
+    }
+
+
+    emailInput.addEventListener("input", function () {
+
+        const value =
+            this.value.trim();
+
+
+        if (value === "") {
+
+            this.classList.remove(
+                "is-valid",
+                "is-invalid"
+            );
+
         }
 
-        document.getElementById("courseTitle").textContent = course;
-        document.getElementById("summaryCourse").textContent = course;
+        else if (isValidEmail(value)) {
 
-        /* =========================================
-           2. INPUT FORMATTING & VALIDATION
-        ========================================= */
-        const phoneInput = document.getElementById("phone");
-        const emailInput = document.getElementById("email");
-        const nameInput = document.getElementById("name");
-        const genderInput = document.getElementById("gender");
-        const progressFill = document.getElementById("progressFill");
-        const progressPercent = document.getElementById("progressPercent");
+            this.classList.add("is-valid");
 
-        // Format phone to numbers only
-        phoneInput.addEventListener("input", function() {
-            this.value = this.value.replace(/\D/g, "").slice(0, 11);
-            updateProgress();
-        });
+            this.classList.remove("is-invalid");
 
-        // Email Real-time visual validation
-        emailInput.addEventListener("input", function() {
-            const validPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (this.value === "") {
-                this.classList.remove("is-valid", "is-invalid");
-            } else if (validPattern.test(this.value)) {
-                this.classList.add("is-valid");
-                this.classList.remove("is-invalid");
-            } else {
-                this.classList.add("is-invalid");
-                this.classList.remove("is-valid");
-            }
-            updateProgress();
-        });
-
-        nameInput.addEventListener("input", updateProgress);
-        genderInput.addEventListener("change", updateProgress);
-
-        /* =========================================
-           3. DYNAMIC FORM PROGRESS
-        ========================================= */
-        function updateProgress() {
-            let filledFields = 0;
-            const totalRequired = 4; // Name, Email, Phone, Gender
-
-            if (nameInput.value.trim() !== "") filledFields++;
-            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) filledFields++;
-            if (phoneInput.value.length === 11) filledFields++;
-            if (genderInput.value !== "") filledFields++;
-
-            const percentage = Math.round((filledFields / totalRequired) * 100);
-            progressFill.style.width = percentage + "%";
-            progressPercent.textContent = percentage + "%";
         }
 
-        /* =========================================
-           4. FORM SUBMISSION HANDLER
-        ========================================= */
-        document.getElementById("registrationForm").addEventListener("submit", function(e) {
+        else {
+
+            this.classList.add("is-invalid");
+
+            this.classList.remove("is-valid");
+
+        }
+
+
+        updateProgress();
+
+    });
+
+
+
+    /* =========================================
+       4. PHONE FORMATTING
+    ========================================= */
+
+    phoneInput.addEventListener("input", function () {
+
+        this.value =
+            this.value
+                .replace(/\D/g, "")
+                .slice(0, 11);
+
+        updateProgress();
+
+    });
+
+
+
+    /* =========================================
+       5. OTHER INPUT EVENTS
+    ========================================= */
+
+    nameInput.addEventListener(
+        "input",
+        updateProgress
+    );
+
+    genderInput.addEventListener(
+        "change",
+        updateProgress
+    );
+
+    messageInput.addEventListener(
+        "input",
+        updateProgress
+    );
+
+
+
+    /* =========================================
+       6. PROGRESS BAR
+    ========================================= */
+
+    function updateProgress() {
+
+        let filledFields = 0;
+
+        const totalRequired = 4;
+
+
+        if (
+            nameInput.value.trim() !== ""
+        ) {
+
+            filledFields++;
+
+        }
+
+
+        if (
+            isValidEmail(
+                emailInput.value
+            )
+        ) {
+
+            filledFields++;
+
+        }
+
+
+        if (
+            phoneInput.value.length === 11
+        ) {
+
+            filledFields++;
+
+        }
+
+
+        if (
+            genderInput.value !== ""
+        ) {
+
+            filledFields++;
+
+        }
+
+
+        const percentage =
+            Math.round(
+                (filledFields / totalRequired) * 100
+            );
+
+
+        progressFill.style.width =
+            percentage + "%";
+
+        progressPercent.textContent =
+            percentage + "%";
+
+    }
+
+
+
+    /* =========================================
+       7. ERROR MESSAGE
+    ========================================= */
+
+    function showError(message) {
+
+        formError.textContent =
+            message;
+
+        formError.classList.add("show");
+
+    }
+
+
+    function hideError() {
+
+        formError.textContent =
+            "";
+
+        formError.classList.remove("show");
+
+    }
+
+
+
+    /* =========================================
+       8. FORM SUBMISSION
+    ========================================= */
+
+    form.addEventListener(
+        "submit",
+        function (e) {
+
             e.preventDefault();
 
-            const submitBtn = document.getElementById("submitBtn");
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Processing Enrollment...";
+            hideError();
+
+
+            const name =
+                nameInput.value.trim();
+
+            const email =
+                emailInput.value.trim();
+
+            const phone =
+                phoneInput.value.trim();
+
+            const gender =
+                genderInput.value;
+
+            const message =
+                messageInput.value.trim();
+
+
+
+            /* =====================================
+               VALIDATION
+            ===================================== */
+
+            if (!name) {
+
+                showError(
+                    "Please enter your full name."
+                );
+
+                nameInput.focus();
+
+                return;
+
+            }
+
+
+            if (!isValidEmail(email)) {
+
+                showError(
+                    "Please enter a valid email address."
+                );
+
+                emailInput.focus();
+
+                return;
+
+            }
+
+
+            if (!/^[0-9]{11}$/.test(phone)) {
+
+                showError(
+                    "Please enter a valid 11-digit phone number."
+                );
+
+                phoneInput.focus();
+
+                return;
+
+            }
+
+
+            if (!gender) {
+
+                showError(
+                    "Please select your gender."
+                );
+
+                genderInput.focus();
+
+                return;
+
+            }
+
+
+
+            /* =====================================
+               DISABLE BUTTON
+            ===================================== */
+
+            submitBtn.disabled =
+                true;
+
+            submitBtn.textContent =
+                "Processing Enrollment...";
+
+
+
+            /* =====================================
+               PAYMENT HANDOFF
+            ===================================== */
 
             const payload = {
-                course: course,
-                name: nameInput.value.trim(),
-                email: emailInput.value.trim(),
-                phone: phoneInput.value.trim(),
-                gender: genderInput.value,
-                message: document.getElementById("message").value.trim()
+
+                course:
+                    course,
+
+                name:
+                    name,
+
+                email:
+                    email,
+
+                phone:
+                    phone,
+
+                gender:
+                    gender,
+
+                message:
+                    message
+
             };
 
+
+            const queryStr =
+                new URLSearchParams(payload)
+                    .toString();
+
+
+
             setTimeout(() => {
-                const queryStr = new URLSearchParams(payload).toString();
-                window.location.href = `payment.html?${queryStr}`;
-            }, 1000);
-        });
-    });
+
+                window.location.href =
+                    `payment.html?${queryStr}`;
+
+            }, 700);
+
+        }
+    );
+
+
+    /* =========================================
+       INITIAL PROGRESS
+    ========================================= */
+
+    updateProgress();
+
+});
+
 </script>
 
-<!-- ALBERT CHATBOT SCRIPT -->
+
+<!-- ALBERT CHATBOT -->
 <script src="js/albert.js"></script>
 
 </body>
