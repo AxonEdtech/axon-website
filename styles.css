@@ -1,3 +1,7 @@
+/* =========================================================
+   AXON EDTECH - GLOBAL STYLES
+   ========================================================= */
+
 /* --- GLOBAL RESET & PREMIUM CANVAS LAYOUT --- */
 * {
     margin: 0;
@@ -7,13 +11,18 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f8fafc; /* Professional soft canvas background */
+    background-color: #f8fafc;
     color: #1e293b;
     min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* --- LANDING PAGE SPLIT CONTAINER --- */
+
+/* =========================================================
+   EXISTING LANDING PAGE SPLIT CONTAINER
+   Kept for compatibility
+   ========================================================= */
+
 .split-container {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
@@ -27,15 +36,16 @@ body {
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    background-color: #ffffff; /* Crisp white for primary copy */
+    background-color: #ffffff;
 }
 
 .left-pane::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
+    background-image:
+        linear-gradient(rgba(37, 99, 235, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.02) 1px, transparent 1px);
     background-size: 24px 24px;
     pointer-events: none;
 }
@@ -50,8 +60,15 @@ body {
     text-decoration: none;
 }
 
-.logo span { color: #2563eb; }
-.logo sup { font-size: 10px; color: #94a3b8; font-weight: 500; }
+.logo span {
+    color: #2563eb;
+}
+
+.logo sup {
+    font-size: 10px;
+    color: #94a3b8;
+    font-weight: 500;
+}
 
 .content-wrap {
     margin: auto 0;
@@ -91,7 +108,9 @@ body {
     color: #0f172a;
 }
 
-.headline span { color: #2563eb; }
+.headline span {
+    color: #2563eb;
+}
 
 .subtext {
     font-size: 18px;
@@ -107,7 +126,11 @@ body {
     flex-wrap: wrap;
 }
 
-/* --- GLOBAL BUTTONS --- */
+
+/* =========================================================
+   GLOBAL BUTTONS
+   ========================================================= */
+
 .btn {
     padding: 16px 32px;
     font-size: 15px;
@@ -116,7 +139,9 @@ body {
     border-radius: 12px;
     display: inline-block;
     text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .btn-primary {
@@ -143,7 +168,11 @@ body {
     transform: translateY(-1px);
 }
 
-.footer-note { font-size: 13px; color: #94a3b8; font-weight: 500; }
+.footer-note {
+    font-size: 13px;
+    color: #94a3b8;
+    font-weight: 500;
+}
 
 .right-pane {
     background-color: #f8fafc;
@@ -158,13 +187,20 @@ body {
     height: 100%;
     max-height: 85vh;
     border-radius: 24px;
-    background: url('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+    background:
+        url('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=1000&q=80')
+        center/cover
+        no-repeat;
     position: relative;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
     border: 8px solid #ffffff;
 }
 
-/* --- GLOBAL SUBPAGE WRAPPER --- */
+
+/* =========================================================
+   GLOBAL SUBPAGE WRAPPER
+   ========================================================= */
+
 .subpage-header {
     padding: 30px 5%;
     display: flex;
@@ -191,10 +227,21 @@ body {
     margin-bottom: 12px;
 }
 
-.section-intro h1 span { color: #2563eb; }
-.section-intro p { font-size: 16px; color: #64748b; line-height: 1.5; }
+.section-intro h1 span {
+    color: #2563eb;
+}
 
-/* --- UNIFIED SINGLE-LINE TOOLBAR ARCHITECTURE --- */
+.section-intro p {
+    font-size: 16px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
 .toolbar-row {
     display: flex;
     align-items: center;
@@ -279,7 +326,11 @@ body {
     font-weight: 700;
 }
 
-/* --- FLOATING GRADUATION CERTIFICATION BADGE --- */
+
+/* =========================================================
+   CERTIFICATION BADGE
+   ========================================================= */
+
 .floating-cert-badge {
     display: flex;
     align-items: center;
@@ -305,12 +356,24 @@ body {
 }
 
 @keyframes floatingEffect {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
-/* --- RESPONSE CARDS GRID --- */
+
+/* =========================================================
+   COURSE / RESPONSE CARDS
+   ========================================================= */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -318,13 +381,14 @@ body {
 }
 
 .student-card {
-    background: #ffffff; /* Crisp white card popping off soft background canvas */
+    background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 16px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+        all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .student-card:hover {
@@ -360,9 +424,17 @@ body {
     z-index: 2;
 }
 
-.card-badge.premium { background: #2563eb; }
-.card-badge.trending { background: #f43f5e; }
-.card-badge.high-pay { background: #10b981; }
+.card-badge.premium {
+    background: #2563eb;
+}
+
+.card-badge.trending {
+    background: #f43f5e;
+}
+
+.card-badge.high-pay {
+    background: #10b981;
+}
 
 .card-body {
     padding: 24px;
@@ -387,9 +459,24 @@ body {
     font-size: 14px;
 }
 
-.price { font-weight: 700; color: #2563eb; font-size: 16px; }
-.duration { color: #64748b; font-weight: 500; }
-.desc { font-size: 14px; color: #475569; line-height: 1.5; margin-bottom: 24px; flex-grow: 1; }
+.price {
+    font-weight: 700;
+    color: #2563eb;
+    font-size: 16px;
+}
+
+.duration {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.desc {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
 
 .enroll-btn {
     display: block;
@@ -412,19 +499,63 @@ body {
     color: #ffffff;
 }
 
+
+/* =========================================================
+   EXISTING RESPONSIVE RULES
+   ========================================================= */
+
 @media (max-width: 1024px) {
-    .split-container { grid-template-columns: 1fr; }
-    .left-pane { padding: 50px 30px; min-height: 60vh; }
-    .content-wrap { margin: 40px 0; }
-    .right-pane { min-height: 50vh; padding: 20px 30px 40px 30px; }
-    .image-frame { max-height: 50vh; }
-    .subpage-header { flex-direction: column; gap: 16px; align-items: flex-start; }
-    .toolbar-row { flex-direction: column; align-items: stretch; }
-    .toolbar-left-mix { flex-direction: column; align-items: stretch; }
-    .search-container { max-width: 100%; min-width: 100%; }
+
+    .split-container {
+        grid-template-columns: 1fr;
+    }
+
+    .left-pane {
+        padding: 50px 30px;
+        min-height: 60vh;
+    }
+
+    .content-wrap {
+        margin: 40px 0;
+    }
+
+    .right-pane {
+        min-height: 50vh;
+        padding: 20px 30px 40px 30px;
+    }
+
+    .image-frame {
+        max-height: 50vh;
+    }
+
+    .subpage-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .toolbar-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .toolbar-left-mix {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-container {
+        max-width: 100%;
+        min-width: 100%;
+    }
 }
 
-/* Albert Chatbot Widget Styling */
+
+/* =========================================================
+   ALBERT CHATBOT
+   Kept intact
+   ========================================================= */
+
 #albert-widget {
     position: fixed;
     bottom: 25px;
@@ -433,7 +564,6 @@ body {
     font-family: inherit;
 }
 
-/* Pop & Roll Entrance Animation for the Button */
 .albert-pop-roll {
     display: flex;
     align-items: center;
@@ -447,9 +577,14 @@ body {
     font-size: 14px;
     cursor: pointer;
     box-shadow: 0 6px 16px rgba(255, 102, 0, 0.35);
-    /* Combines entry roll, then infinite float */
-    animation: popRollIn 1.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, floatBounce 3s ease-in-out infinite 1.2s;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    animation:
+        popRollIn 1.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        floatBounce 3s ease-in-out infinite 1.2s;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .albert-pop-roll:hover {
@@ -463,16 +598,18 @@ body {
     animation: wiggle 2s infinite ease-in-out 2s;
 }
 
-/* KEYFRAMES FOR THE POP & ROLL EFFECT */
 @keyframes popRollIn {
+
     0% {
         opacity: 0;
         transform: translateX(100px) rotate(360deg) scale(0.2);
     }
+
     70% {
         opacity: 1;
         transform: translateX(-10px) rotate(-10deg) scale(1.1);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0) rotate(0deg) scale(1);
@@ -480,14 +617,31 @@ body {
 }
 
 @keyframes floatBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
 }
 
 @keyframes wiggle {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-12deg); }
-    75% { transform: rotate(12deg); }
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-12deg);
+    }
+
+    75% {
+        transform: rotate(12deg);
+    }
 }
 
 #albert-chatbox {
@@ -587,4 +741,1578 @@ body {
     border: none;
     padding: 0 15px;
     cursor: pointer;
+}
+
+
+/* =========================================================
+   =========================================================
+   NEW AXON EDTECH HOMEPAGE
+   =========================================================
+   =========================================================
+
+   IMPORTANT:
+   Everything below is scoped to #axon-home.
+
+   It will NOT change:
+   - courses.html
+   - services.html
+   - registration.html
+   - payment.html
+   - success.html
+   - existing .grid styles
+   - existing .student-card styles
+   - existing Albert styles
+   */
+
+
+/* =========================================================
+   HOMEPAGE BODY
+   ========================================================= */
+
+#axon-home {
+    background: #ffffff;
+    color: #10265f;
+}
+
+#axon-home,
+#axon-home * {
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   THICK BLUE -> YELLOW HEADER
+   ========================================================= */
+
+#axon-home .axon-home-header {
+    width: 100%;
+    min-height: 105px;
+
+    background:
+        linear-gradient(
+            105deg,
+            #0757e8 0%,
+            #1677ed 25%,
+            #58a8d8 48%,
+            #d7d95e 72%,
+            #ffd92f 100%
+        );
+
+    border: none;
+
+    position: relative;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+}
+
+#axon-home .axon-home-header-inner {
+    width: 100%;
+    max-width: 1450px;
+
+    margin: 0 auto;
+    padding: 0 5.5%;
+
+    min-height: 105px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================================
+   HOMEPAGE LOGO
+   ========================================================= */
+
+#axon-home .axon-home-logo {
+    color: #ffffff;
+
+    font-size: 30px;
+    font-weight: 900;
+
+    letter-spacing: -1.2px;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    line-height: 1;
+}
+
+#axon-home .axon-home-logo span {
+    color: #ffd92f;
+}
+
+#axon-home .axon-home-logo small {
+    display: block;
+
+    margin-left: 2px;
+    margin-top: 5px;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   HOMEPAGE NAVIGATION
+   VERY WIDE SPACING
+   ========================================================= */
+
+#axon-home .axon-home-nav {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: space-evenly;
+
+    margin-left: 100px;
+
+    gap: 80px;
+}
+
+#axon-home .axon-home-nav a {
+    color: #061a55;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    position: relative;
+
+    padding: 12px 5px;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+#axon-home .axon-home-nav a:hover {
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+#axon-home .axon-home-nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 2px;
+
+    width: 0;
+    height: 2px;
+
+    background: #ffffff;
+
+    transform: translateX(-50%);
+
+    transition: width 0.25s ease;
+}
+
+#axon-home .axon-home-nav a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   HOMEPAGE HERO
+   ========================================================= */
+
+#axon-home .axon-home-hero {
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    min-height: 700px;
+
+    padding: 70px 5.5%;
+
+    display: grid;
+
+    grid-template-columns: 0.95fr 1.05fr;
+
+    gap: 50px;
+
+    align-items: center;
+
+    background: #ffffff;
+
+    position: relative;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   SUBTLE EARTH / GLOBAL GRID
+   ========================================================= */
+
+#axon-home .axon-home-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 850px;
+    height: 850px;
+
+    right: -180px;
+    top: 50%;
+
+    transform: translateY(-45%);
+
+    border-radius: 50%;
+
+    z-index: -2;
+
+    opacity: 0.30;
+
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0,
+            transparent 52px,
+            rgba(37, 99, 235, 0.06) 53px,
+            transparent 54px
+        ),
+
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0,
+            transparent 82px,
+            rgba(37, 99, 235, 0.05) 83px,
+            transparent 84px
+        );
+
+    border: 1px solid rgba(37, 99, 235, 0.07);
+
+    box-shadow:
+        inset 0 0 100px rgba(37, 99, 235, 0.035);
+}
+
+#axon-home .axon-home-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 850px;
+    height: 850px;
+
+    right: -180px;
+    top: 50%;
+
+    transform: translateY(-45%);
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+    opacity: 0.25;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 48%,
+            rgba(37, 99, 235, 0.05) 49%,
+            transparent 50%
+        ),
+
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(37, 99, 235, 0.045) 36%,
+            transparent 37%
+        ),
+
+        radial-gradient(
+            ellipse at center,
+            transparent 22%,
+            rgba(37, 99, 235, 0.04) 23%,
+            transparent 24%
+        );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+#axon-home .axon-home-hero-content {
+    max-width: 650px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+#axon-home .axon-home-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    color: #1264ec;
+
+    background: #eef5ff;
+
+    border: none;
+
+    padding: 8px 16px;
+
+    border-radius: 50px;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+#axon-home .axon-home-hero h1 {
+    margin: 25px 0;
+
+    font-size: clamp(48px, 5.2vw, 72px);
+
+    line-height: 1.02;
+
+    letter-spacing: -3px;
+
+    font-weight: 900;
+
+    color: #10265f;
+}
+
+#axon-home .axon-home-hero h1 span {
+    color: #1264ec;
+}
+
+#axon-home .axon-home-hero-content > p {
+    max-width: 590px;
+
+    color: #64748b;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 32px;
+}
+
+#axon-home .axon-home-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+}
+
+#axon-home .axon-home-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 15px 27px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+#axon-home .axon-home-btn-primary {
+    background: #1264ec;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 9px 25px rgba(18, 100, 236, 0.20);
+}
+
+#axon-home .axon-home-btn-primary:hover {
+    background: #0757d8;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(18, 100, 236, 0.28);
+}
+
+#axon-home .axon-home-btn-secondary {
+    background: #ffffff;
+
+    color: #1264ec;
+
+    border: 2px solid #1264ec;
+}
+
+#axon-home .axon-home-btn-secondary:hover {
+    background: #eef5ff;
+
+    transform: translateY(-2px);
+}
+
+#axon-home .axon-home-hero-note {
+    margin-top: 26px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+   ========================================================= */
+
+#axon-home .axon-home-hero-image {
+    height: 530px;
+
+    position: relative;
+
+    overflow: visible;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 3;
+}
+
+#axon-home .axon-home-hero-image img {
+    width: 88%;
+    height: 82%;
+
+    object-fit: cover;
+
+    display: block;
+
+    position: relative;
+
+    z-index: 3;
+
+    border-radius: 24px;
+
+    border: 8px solid #ffffff;
+
+    box-shadow:
+        0 25px 55px rgba(15, 23, 42, 0.12);
+}
+
+
+/* BLUE ACCENT */
+
+#axon-home .axon-home-hero-image::before {
+    content: "";
+
+    position: absolute;
+
+    width: 82px;
+    height: 82px;
+
+    top: 45px;
+    left: 1%;
+
+    background: #1264ec;
+
+    border-radius: 14px;
+
+    z-index: 1;
+}
+
+
+/* YELLOW ACCENT */
+
+#axon-home .axon-home-hero-image::after {
+    content: "";
+
+    position: absolute;
+
+    width: 78px;
+    height: 220px;
+
+    right: 1%;
+    bottom: 45px;
+
+    background: #ffd426;
+
+    border-radius: 18px;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   HOMEPAGE SECTION LABEL
+   ========================================================= */
+
+#axon-home .axon-home-section-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    color: #1264ec;
+
+    background: #eef5ff;
+
+    border: none;
+
+    padding: 8px 15px;
+
+    border-radius: 50px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   ABOUT SECTION
+   ========================================================= */
+
+#axon-home .axon-home-about {
+    max-width: none;
+
+    padding:
+        100px
+        max(5.5%, calc((100% - 1450px) / 2 + 5.5%));
+
+    display: grid;
+
+    grid-template-columns: 0.95fr 1.05fr;
+
+    gap: 80px;
+
+    align-items: center;
+
+    background: #f8fbff;
+}
+
+#axon-home .axon-home-section-image {
+    height: 500px;
+}
+
+#axon-home .axon-home-section-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+#axon-home .axon-home-section-content {
+    max-width: 620px;
+}
+
+#axon-home .axon-home-section-content h2,
+#axon-home .axon-home-learning-heading h2,
+#axon-home .axon-home-feature-content h2,
+#axon-home .axon-home-courses-heading h2,
+#axon-home .axon-home-services-heading h2,
+#axon-home .axon-home-cta h2 {
+    font-size: clamp(34px, 4vw, 52px);
+
+    line-height: 1.1;
+
+    letter-spacing: -1.8px;
+
+    font-weight: 900;
+
+    color: #10265f;
+
+    margin: 20px 0;
+}
+
+#axon-home .axon-home-section-content h2 span,
+#axon-home .axon-home-learning-heading h2 span,
+#axon-home .axon-home-feature-content h2 span,
+#axon-home .axon-home-courses-heading h2 span,
+#axon-home .axon-home-services-heading h2 span,
+#axon-home .axon-home-cta h2 span {
+    color: #1264ec;
+}
+
+#axon-home .axon-home-section-content p {
+    color: #64748b;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+
+    margin-bottom: 18px;
+}
+
+#axon-home .axon-home-text-link {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: #1264ec;
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   LEARNING INTRO
+   ========================================================= */
+
+#axon-home .axon-home-learning-intro {
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding: 100px 5.5% 45px;
+
+    text-align: center;
+
+    background: #ffffff;
+}
+
+#axon-home .axon-home-learning-heading {
+    max-width: 760px;
+
+    margin: 0 auto;
+}
+
+#axon-home .axon-home-learning-heading p {
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    color: #64748b;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   LEARNING CARDS
+   ========================================================= */
+
+#axon-home .axon-home-learning-grid {
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding: 30px 5.5% 100px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    background: #ffffff;
+}
+
+#axon-home .axon-home-learning-card {
+    background: #ffffff;
+
+    border: 1px solid #e5edf7;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#axon-home .axon-home-learning-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+#axon-home .axon-home-card-image {
+    height: 240px;
+
+    overflow: hidden;
+}
+
+#axon-home .axon-home-card-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+#axon-home .axon-home-learning-card:hover
+.axon-home-card-image img {
+    transform: scale(1.04);
+}
+
+#axon-home .axon-home-card-content {
+    padding: 28px;
+}
+
+#axon-home .axon-home-card-content > span {
+    color: #1264ec;
+
+    font-size: 12px;
+
+    font-weight: 900;
+}
+
+#axon-home .axon-home-card-content h3 {
+    margin: 12px 0;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    color: #10265f;
+}
+
+#axon-home .axon-home-card-content p {
+    color: #64748b;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+#axon-home .axon-home-card-content a {
+    color: #1264ec;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FEATURE SECTION
+   ========================================================= */
+
+#axon-home .axon-home-feature {
+    max-width: none;
+
+    padding:
+        100px
+        max(5.5%, calc((100% - 1450px) / 2 + 5.5%));
+
+    background: #10265f;
+
+    color: #ffffff;
+
+    display: grid;
+
+    grid-template-columns: 1fr 0.9fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+#axon-home .axon-home-feature-content {
+    max-width: 620px;
+}
+
+#axon-home .axon-home-feature-content h2 {
+    color: #ffffff;
+}
+
+#axon-home .axon-home-feature-content > p {
+    color: #cbd5e1;
+
+    line-height: 1.7;
+}
+
+#axon-home .axon-home-feature .axon-home-section-label {
+    background: rgba(255, 255, 255, 0.09);
+
+    color: #ffd426;
+}
+
+#axon-home .axon-home-feature-list {
+    margin: 30px 0;
+
+    display: grid;
+
+    gap: 15px;
+}
+
+#axon-home .axon-home-feature-list div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    color: #e2e8f0;
+
+    padding-bottom: 15px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.1);
+}
+
+#axon-home .axon-home-feature-list strong {
+    color: #ffd426;
+
+    font-size: 12px;
+}
+
+#axon-home .axon-home-feature-list span {
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+#axon-home .axon-home-feature-image {
+    height: 520px;
+}
+
+#axon-home .axon-home-feature-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 22px;
+}
+
+
+/* =========================================================
+   COURSES
+   ========================================================= */
+
+#axon-home .axon-home-courses {
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding: 100px 5.5%;
+
+    background: #ffffff;
+}
+
+#axon-home .axon-home-courses-heading {
+    max-width: 720px;
+
+    margin-bottom: 50px;
+}
+
+#axon-home .axon-home-courses-heading > p {
+    color: #64748b;
+
+    line-height: 1.7;
+}
+
+#axon-home .axon-home-course-list {
+    border-top: 1px solid #e2e8f0;
+}
+
+#axon-home .axon-home-course-item {
+    display: grid;
+
+    grid-template-columns: 70px 1fr auto;
+
+    gap: 25px;
+
+    align-items: center;
+
+    padding: 27px 0;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+#axon-home .axon-home-course-number {
+    color: #1264ec;
+
+    font-weight: 900;
+
+    font-size: 13px;
+}
+
+#axon-home .axon-home-course-item h3 {
+    margin-bottom: 7px;
+
+    color: #10265f;
+
+    font-size: 18px;
+}
+
+#axon-home .axon-home-course-item p {
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+#axon-home .axon-home-course-item a {
+    color: #1264ec;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+#axon-home .axon-home-centered-action {
+    text-align: center;
+
+    margin-top: 45px;
+}
+
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+#axon-home .axon-home-services {
+    max-width: none;
+
+    padding:
+        100px
+        max(5.5%, calc((100% - 1450px) / 2 + 5.5%));
+
+    background: #f8fbff;
+}
+
+#axon-home .axon-home-services-heading {
+    max-width: 700px;
+
+    margin-bottom: 50px;
+}
+
+#axon-home .axon-home-services-heading > p {
+    color: #64748b;
+
+    line-height: 1.7;
+}
+
+#axon-home .axon-home-services-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+#axon-home .axon-home-service-box {
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 16px;
+
+    padding: 32px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#axon-home .axon-home-service-box:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.07);
+}
+
+#axon-home .axon-home-service-icon {
+    color: #1264ec;
+
+    font-weight: 900;
+
+    font-size: 12px;
+
+    margin-bottom: 22px;
+}
+
+#axon-home .axon-home-service-box h3 {
+    color: #10265f;
+
+    margin-bottom: 12px;
+
+    font-size: 19px;
+}
+
+#axon-home .axon-home-service-box p {
+    color: #64748b;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+#axon-home .axon-home-cta {
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding: 110px 5.5%;
+
+    text-align: center;
+
+    background: #ffffff;
+}
+
+#axon-home .axon-home-cta-inner {
+    max-width: 760px;
+
+    margin: 0 auto;
+}
+
+#axon-home .axon-home-cta p {
+    max-width: 620px;
+
+    margin: 0 auto 30px;
+
+    color: #64748b;
+
+    line-height: 1.7;
+}
+
+#axon-home .axon-home-cta .axon-home-actions {
+    justify-content: center;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+#axon-home .axon-home-footer {
+    background: #10265f;
+
+    color: #ffffff;
+
+    padding: 65px 5.5% 25px;
+}
+
+#axon-home .axon-home-footer-inner {
+    max-width: 1450px;
+
+    margin: 0 auto 45px;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr;
+
+    gap: 50px;
+}
+
+#axon-home .axon-home-footer .axon-home-logo {
+    color: #ffffff;
+}
+
+#axon-home .axon-home-footer p {
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    margin-top: 15px;
+}
+
+#axon-home .axon-home-footer-links {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+#axon-home .axon-home-footer-links a {
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+#axon-home .axon-home-footer-links a:hover {
+    color: #ffd426;
+}
+
+#axon-home .axon-home-footer-bottom {
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   HOMEPAGE TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    #axon-home .axon-home-nav {
+        margin-left: 50px;
+
+        gap: 45px;
+    }
+
+    #axon-home .axon-home-hero {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 30px;
+    }
+
+    #axon-home .axon-home-hero h1 {
+        font-size: clamp(43px, 5vw, 62px);
+    }
+
+    #axon-home .axon-home-hero-image {
+        height: 480px;
+    }
+}
+
+
+/* =========================================================
+   HOMEPAGE TABLET / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #axon-home .axon-home-header-inner {
+        padding: 0 4%;
+    }
+
+    #axon-home .axon-home-nav {
+        margin-left: 35px;
+
+        gap: 30px;
+    }
+
+    #axon-home .axon-home-nav a {
+        font-size: 14px;
+    }
+
+    #axon-home .axon-home-hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 65px;
+
+        padding-bottom: 65px;
+    }
+
+    #axon-home .axon-home-hero-content {
+        max-width: 720px;
+    }
+
+    #axon-home .axon-home-hero-image {
+        height: 500px;
+    }
+
+    #axon-home .axon-home-about {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    #axon-home .axon-home-section-image {
+        height: 450px;
+    }
+
+    #axon-home .axon-home-learning-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #axon-home .axon-home-feature {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    #axon-home .axon-home-services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #axon-home .axon-home-footer-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =========================================================
+   HOMEPAGE MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    #axon-home .axon-home-header {
+        min-height: 82px;
+    }
+
+    #axon-home .axon-home-header-inner {
+        min-height: 82px;
+
+        padding:
+            0
+            20px;
+
+        justify-content: center;
+    }
+
+    #axon-home .axon-home-logo {
+        font-size: 25px;
+    }
+
+    #axon-home .axon-home-nav {
+        display: none;
+    }
+
+
+    /* HERO */
+
+    #axon-home .axon-home-hero {
+        padding:
+            55px
+            20px
+            70px;
+
+        min-height: auto;
+    }
+
+    #axon-home .axon-home-hero h1 {
+        font-size: 45px;
+
+        line-height: 1.04;
+
+        letter-spacing: -2px;
+    }
+
+    #axon-home .axon-home-hero-content > p {
+        font-size: 16px;
+    }
+
+    #axon-home .axon-home-hero-image {
+        height: 360px;
+    }
+
+    #axon-home .axon-home-hero-image img {
+        width: 88%;
+
+        height: 82%;
+    }
+
+
+    /* GLOBE */
+
+    #axon-home .axon-home-hero::before,
+    #axon-home .axon-home-hero::after {
+        width: 500px;
+
+        height: 500px;
+
+        right: -230px;
+
+        opacity: 0.15;
+    }
+
+
+    /* ABOUT */
+
+    #axon-home .axon-home-about {
+        padding:
+            75px
+            20px;
+
+        gap: 40px;
+    }
+
+    #axon-home .axon-home-section-image {
+        height: 350px;
+    }
+
+
+    /* LEARNING */
+
+    #axon-home .axon-home-learning-intro {
+        padding:
+            75px
+            20px
+            30px;
+    }
+
+    #axon-home .axon-home-learning-grid {
+        grid-template-columns: 1fr;
+
+        padding:
+            20px
+            20px
+            75px;
+    }
+
+
+    /* FEATURE */
+
+    #axon-home .axon-home-feature {
+        padding:
+            75px
+            20px;
+    }
+
+    #axon-home .axon-home-feature-image {
+        height: 350px;
+    }
+
+
+    /* COURSES */
+
+    #axon-home .axon-home-courses {
+        padding:
+            75px
+            20px;
+    }
+
+    #axon-home .axon-home-course-item {
+        grid-template-columns: 45px 1fr;
+
+        gap: 15px;
+    }
+
+    #axon-home .axon-home-course-item a {
+        grid-column: 2;
+    }
+
+
+    /* SERVICES */
+
+    #axon-home .axon-home-services {
+        padding:
+            75px
+            20px;
+    }
+
+    #axon-home .axon-home-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* CTA */
+
+    #axon-home .axon-home-cta {
+        padding:
+            80px
+            20px;
+    }
+
+
+    /* FOOTER */
+
+    #axon-home .axon-home-footer {
+        padding:
+            50px
+            20px
+            20px;
+    }
+
+    #axon-home .axon-home-footer-inner {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    #axon-home .axon-home-footer-bottom {
+        flex-direction: column;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    #axon-home .axon-home-hero h1 {
+        font-size: 38px;
+    }
+
+    #axon-home .axon-home-hero-image {
+        height: 310px;
+    }
+
+    #axon-home .axon-home-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #axon-home .axon-home-btn {
+        width: 100%;
+    }
+
+    #axon-home .axon-home-hero-image::before {
+        width: 55px;
+        height: 55px;
+    }
+
+    #axon-home .axon-home-hero-image::after {
+        width: 55px;
+        height: 150px;
+    }
+}
+
+/* =========================================================
+   AXON HOMEPAGE — FLOATING DIGITAL GRID BACKGROUND
+   Scoped only to #axon-home
+   ========================================================= */
+
+   #axon-home .axon-home-hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: #ffffff;
+}
+
+/* Main floating grid */
+#axon-home .axon-home-hero::before {
+    content: "";
+    position: absolute;
+    inset: -120%;
+    z-index: -2;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 105, 255, 0.07) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 105, 255, 0.07) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    transform: perspective(700px) rotateX(58deg) rotateZ(-8deg);
+
+    animation: axonFloatingGrid 24s linear infinite;
+
+    opacity: 0.65;
+}
+
+/* Soft blue/yellow atmosphere above the grid */
+#axon-home .axon-home-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(0, 110, 255, 0.09),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 205, 0, 0.08),
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.75),
+            rgba(255,255,255,0.9)
+        );
+
+    pointer-events: none;
+}
+
+
+/* Floating movement */
+@keyframes axonFloatingGrid {
+
+    0% {
+        transform:
+            perspective(700px)
+            rotateX(58deg)
+            rotateZ(-8deg)
+            translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform:
+            perspective(700px)
+            rotateX(58deg)
+            rotateZ(-8deg)
+            translate3d(35px, 70px, 0);
+    }
+
+    100% {
+        transform:
+            perspective(700px)
+            rotateX(58deg)
+            rotateZ(-8deg)
+            translate3d(70px, 140px, 0);
+    }
 }
