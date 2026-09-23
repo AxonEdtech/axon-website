@@ -99,6 +99,45 @@
             background: #1d4ed8;
         }
     </style>
+
+<!-- JSON-LD Schema Markup for Contact Page -->
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ContactPage",
+          "@id": "https://www.axonedtech.com.ng/contact.html#webpage",
+          "url": "https://www.axonedtech.com.ng/contact.html",
+          "name": "Contact Us | AXON EdTech",
+          "description": "Get in touch with AXON EdTech for inquiries about digital skills training, courses, tech support, or partnerships.",
+          "publisher": {
+            "@type": "EducationalOrganization",
+            "name": "AXON EdTech",
+            "url": "https://www.axonedtech.com.ng"
+          }
+        },
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://www.axonedtech.com.ng/#organization",
+          "name": "AXON EdTech",
+          "url": "https://www.axonedtech.com.ng",
+          "logo": "https://www.axonedtech.com.ng/logo.png",
+          "email": "axonedtech@gmail.com",
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+2347061864060",
+              "contactType": "customer service",
+              "availableLanguage": ["English"],
+              "areaServed": "NG"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
